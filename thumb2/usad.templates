@@ -1,0 +1,4 @@
+include fields.inc
+
+template usad8 [reg], [reg], [reg]
+template usada8 [reg], [reg], [reg], [reg]

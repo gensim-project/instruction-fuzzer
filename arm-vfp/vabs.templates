@@ -1,0 +1,4 @@
+include fields.inc
+
+template vabs.f32 [sreg], [sreg]
+template vabs.f64 [dreg], [dreg]

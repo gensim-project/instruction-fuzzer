@@ -1,0 +1,13 @@
+include fields.inc
+
+template vcmp.f32 [sreg], [sreg]
+template vcmp.f64 [dreg], [dreg]
+
+template vcmp.f32 [sreg], #0.0
+template vcmp.f64 [dreg], #0.0
+
+template vcmpe.f32 [sreg], [sreg]
+template vcmpe.f64 [dreg], [dreg]
+
+template vcmpe.f32 [sreg], #0.0
+template vcmpe.f64 [dreg], #0.0

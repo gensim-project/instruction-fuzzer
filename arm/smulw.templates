@@ -1,0 +1,4 @@
+include fields.inc
+
+template smulwb [reg], [reg], [reg]
+template smulwt [reg], [reg], [reg]

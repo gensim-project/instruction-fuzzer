@@ -1,0 +1,6 @@
+include fields.inc
+
+template rsb[s] [reg], [reg], [reg]  
+template rsb[s] [reg], [reg], [reg], [shift] [shift_imm]
+template rsb[s] [reg], [reg], [reg], [shift] [reg]
+template rsb[s] [reg], [reg], [imm]  

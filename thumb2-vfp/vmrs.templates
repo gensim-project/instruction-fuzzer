@@ -1,0 +1,4 @@
+include fields.inc
+
+template vmrs [greg], fpscr
+template vmrs APSR_nzcv, fpscr

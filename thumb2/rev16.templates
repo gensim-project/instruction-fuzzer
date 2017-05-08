@@ -1,0 +1,4 @@
+include fields.inc
+
+template rev16 [loreg], [loreg]
+template rev16.w [reg], [reg]

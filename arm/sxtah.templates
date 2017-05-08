@@ -1,0 +1,4 @@
+include fields.inc
+
+template sxtah [reg], [reg], [reg]
+template sxtah [reg], [reg], [reg], [rotate]

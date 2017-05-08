@@ -1,0 +1,4 @@
+include fields.inc
+
+template vrev32.8 [dreg], [dreg]
+template vrev32.8 [qreg], [qreg]

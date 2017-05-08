@@ -1,0 +1,6 @@
+include fields.inc
+
+template lsls [loreg], [loreg], [smallimm]
+template lsl[s].w [reg], [reg], [smallimm]
+template lsls [loreg], [loreg]
+template lsl[s].w [reg], [reg], [reg]

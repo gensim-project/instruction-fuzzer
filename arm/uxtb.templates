@@ -1,0 +1,4 @@
+include fields.inc
+
+template uxtb [reg], [reg]
+template uxtb [reg], [reg], [rotate]

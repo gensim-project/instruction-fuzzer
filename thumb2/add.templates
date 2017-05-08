@@ -1,0 +1,14 @@
+include fields.inc
+
+template adds [loreg], [loreg], [smallimm]
+template adds [loreg], [imm]
+template add[s].w [reg], [reg], [imm]
+template add[s].w [reg], pc, [imm]
+template addw [reg], [reg], [imm]
+template addw [reg], pc, [imm]
+template adds [loreg], [loreg], [loreg]
+template add [reg], [reg]
+template add [reg], pc
+template add[s].w [reg], [reg], [reg]
+template add[s].w [reg], [reg], [reg], [shift] [smallimm]
+

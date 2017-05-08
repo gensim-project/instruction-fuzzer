@@ -1,0 +1,5 @@
+include fields.inc
+
+template ssat [reg], [imm], [reg]
+template ssat [reg], [imm], [reg], lsl [smallimm]
+template ssat [reg], [imm], [reg], asr [smallimm]

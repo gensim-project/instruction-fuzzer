@@ -1,0 +1,4 @@
+include fields.inc
+
+template vstr [sreg], \[[breg], [simm4]\]
+template vstr [dreg], \[[breg], [simm4]\]

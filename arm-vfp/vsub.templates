@@ -1,0 +1,7 @@
+include fields.inc
+
+template vsub.f64 [dreg], [dreg], [dreg]
+template vsub.f32 [sreg], [sreg], [sreg]
+
+template vsub.i32 [dreg], [dreg], [dreg]
+template vsub.i32 [qreg], [qreg], [qreg]

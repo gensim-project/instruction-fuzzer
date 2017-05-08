@@ -1,0 +1,26 @@
+include fields.inc
+
+template vcvt.s32.f64 [sreg], [dreg]
+template vcvtr.s32.f64 [sreg], [dreg]
+
+template vcvt.s32.f32 [sreg], [sreg]
+template vcvtr.s32.f32 [sreg], [sreg]
+
+template vcvt.u32.f64 [sreg], [dreg]
+template vcvtr.u32.f64 [sreg], [dreg]
+
+template vcvt.u32.f32 [sreg], [sreg]
+template vcvtr.u32.f32 [sreg], [sreg]
+
+template vcvt.f64.s32 [dreg], [sreg]
+template vcvt.f64.u32 [dreg], [sreg]
+
+template vcvt.f32.s32 [sreg], [sreg]
+template vcvt.f32.u32 [sreg], [sreg]
+
+template vcvt.f64.f32 [dreg], [sreg]
+
+template vcvt.f32.f64 [sreg], [dreg]
+
+template vcvt.f64.s32 d0, d0, #[imm1t32]
+template vcvt.f64.s32 d16, d16, #[imm1t32]

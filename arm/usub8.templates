@@ -1,0 +1,3 @@
+include fields.inc
+
+template usub8 [reg], [reg], [reg]

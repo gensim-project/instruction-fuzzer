@@ -1,0 +1,7 @@
+include fields.inc
+
+template vmla.f32 [sreg], [sreg], [sreg]
+template vmla.f64 [dreg], [dreg], [dreg]
+
+template vmls.f32 [sreg], [sreg], [sreg]
+template vmls.f64 [dreg], [dreg], [dreg]

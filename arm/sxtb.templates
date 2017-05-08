@@ -1,0 +1,5 @@
+include fields.inc
+
+template sxtb [reg], [reg]
+template sxtb [reg], [reg], [rotate]
+

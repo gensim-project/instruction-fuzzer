@@ -1,0 +1,6 @@
+include fields.inc
+
+template ldrd r4, r5, \[[breg]\]
+template ldrd r4, r5, \[[breg], r6 \]
+template ldrd r4, r5, \[[breg], r6 \]!
+template ldrd r4, r5, \[[breg]\], r6

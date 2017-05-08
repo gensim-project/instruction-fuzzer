@@ -1,0 +1,3 @@
+include fields.inc
+
+template umaal [reg], [reg], [reg], [reg]

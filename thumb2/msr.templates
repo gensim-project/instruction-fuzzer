@@ -1,0 +1,6 @@
+include fields.inc
+
+template msr APSR_nzcvq, [reg]
+template msr APSR_gnzcvq, [reg]
+template msr APSR_g, [reg]
+

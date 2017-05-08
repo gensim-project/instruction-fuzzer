@@ -1,0 +1,3 @@
+include fields.inc
+
+template mla[s] [reg], [reg], [reg], [reg]

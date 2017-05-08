@@ -1,0 +1,5 @@
+include fields.inc
+
+template qsub [reg], [reg], [reg]
+template qsub16 [reg], [reg], [reg]
+template qsub8 [reg], [reg], [reg]

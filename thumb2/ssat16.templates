@@ -1,0 +1,3 @@
+include fields.inc
+
+template ssat16 [reg], [smallimm], [reg]

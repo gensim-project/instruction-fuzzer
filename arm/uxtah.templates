@@ -1,0 +1,4 @@
+include fields.inc
+
+template uxtah [reg], [reg], [reg]
+template uxtah [reg], [reg], [reg], [rotate]

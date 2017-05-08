@@ -1,0 +1,5 @@
+include fields.inc
+
+template strd [oreg], [oreg], \[[breg], [simm4]\]
+template strd [oreg], [oreg], \[[breg]\], [simm4]
+template strd [oreg], [oreg], \[[breg], [simm4]\]!

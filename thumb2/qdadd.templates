@@ -1,0 +1,3 @@
+include fields.inc
+
+template qdadd [reg], [reg], [reg]

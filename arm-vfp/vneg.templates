@@ -1,0 +1,4 @@
+include fields.inc
+
+template vneg.f32 [sreg], [sreg]
+template vneg.f64 [dreg], [dreg]

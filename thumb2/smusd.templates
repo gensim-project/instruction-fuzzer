@@ -1,0 +1,4 @@
+include fields.inc
+
+template smusd [reg], [reg], [reg]
+template smusdx [reg], [reg], [reg]

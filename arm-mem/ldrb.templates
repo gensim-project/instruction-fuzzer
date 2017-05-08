@@ -1,0 +1,13 @@
+include fields.inc
+
+template ldrb [greg], \[[breg], +[simm4] \]
+template ldrb [greg], \[[breg] \] , [simm4]
+template ldrb [greg], \[[breg], [simm4] \]!
+
+template ldrb [greg], \[[breg], [oreg] \]
+template ldrb [greg], \[[breg], [oreg] \]!
+template ldrb [greg], \[[breg] \], [oreg]
+
+template ldrb [greg], \[[breg], -[oreg] \]
+template ldrb [greg], \[[breg], -[oreg] \]!
+template ldrb [greg], \[[breg] \], -[oreg]

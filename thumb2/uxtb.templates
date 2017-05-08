@@ -1,0 +1,5 @@
+include fields.inc
+
+template uxtb [loreg], [loreg]
+template uxtb.w [reg], [reg]
+template uxtb.w [reg], [reg], [rotate]

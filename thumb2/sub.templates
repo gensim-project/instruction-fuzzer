@@ -1,0 +1,9 @@
+include fields.inc
+
+template subs [loreg], [loreg], [smallimm]
+template subs [loreg], [imm]
+template sub[s].w [reg], [reg], [imm]
+template subw [reg], [reg], [imm]
+template subs [loreg], [loreg], [loreg]
+template sub[s].w [reg], [reg], [reg]
+template sub[s].w [reg], [reg], [reg], [shift] [smallimm]

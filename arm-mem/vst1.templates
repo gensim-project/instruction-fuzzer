@@ -1,0 +1,4 @@
+include fields.inc
+
+template vst1.32 { d26-d27 }, \[[breg] : 128 \]!
+template vst1.32 { d26-d27 }, \[[breg] : 128 \]

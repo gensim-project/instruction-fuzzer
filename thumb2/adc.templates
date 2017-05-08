@@ -1,0 +1,5 @@
+include fields.inc
+
+template adc [reg], [reg], [imm]
+template adcs [loreg], [loreg]
+template adc[s].w [reg], [reg], [reg], [shift] [smallimm]

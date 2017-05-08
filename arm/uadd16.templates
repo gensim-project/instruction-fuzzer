@@ -1,0 +1,3 @@
+include fields.inc
+
+template uadd16 [reg], [reg], [reg]

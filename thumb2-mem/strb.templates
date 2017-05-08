@@ -1,0 +1,15 @@
+include fields.inc
+
+template strb [oreg], \[[breg], [imm4] \]
+
+template strb.w [oreg], \[[breg], [imm4] \]
+
+template strb [oreg], \[[breg], [nimm4] \]
+template strb [oreg], \[[breg] \], [simm4]
+template strb [oreg], \[[breg], [simm4] \]!
+
+template strb [oreg], \[[breg], [oreg]\]
+
+template strb.w [oreg], \[[breg], [oreg], lsl 1 \]
+template strb.w [oreg], \[[breg], [oreg], lsl 2 \]
+template strb.w [oreg], \[[breg], [oreg], lsl 3 \]

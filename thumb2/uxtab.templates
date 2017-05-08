@@ -1,0 +1,4 @@
+include fields.inc
+
+template uxtab [reg], [reg], [reg]
+template uxtab [reg], [reg], [reg], [rotate]

@@ -1,0 +1,7 @@
+include fields.inc
+
+template and[s] [reg], [reg], [imm]
+template ands [loreg], [loreg]
+template and[s] [reg], [reg], [reg]
+template and[s] [reg], [reg], [reg], [shift] [smallimm]
+

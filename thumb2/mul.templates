@@ -1,0 +1,4 @@
+include fields.inc
+
+template mul [loreg], [loreg], [loreg]
+template mul [reg], [reg], [reg]

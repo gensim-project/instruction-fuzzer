@@ -1,0 +1,4 @@
+include fields.inc
+
+template pkhtb [reg], [reg], [reg]
+template pkhtb [reg], [reg], [reg], asr #[imm1t32]

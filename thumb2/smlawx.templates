@@ -1,0 +1,4 @@
+include fields.inc
+
+template smlawb [reg], [reg], [reg], [reg]
+template smlawt [reg], [reg], [reg], [reg]

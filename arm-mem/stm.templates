@@ -1,0 +1,33 @@
+include fields.inc
+
+template stm [breg], {[oreg], [oreg], [oreg], [oreg]}
+template stm [breg], {[oreg], [oreg]}
+template stm [breg], {[oreg]}
+
+template stm [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template stm [breg]!, {[oreg], [oreg]}
+template stm [breg]!, {[oreg]}
+
+template stmda [breg], {[oreg], [oreg], [oreg], [oreg]}
+template stmda [breg], {[oreg], [oreg]}
+template stmda [breg], {[oreg]}
+
+template stmda [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template stmda [breg]!, {[oreg], [oreg]}
+template stmda [breg]!, {[oreg]}
+
+template stmdb [breg], {[oreg], [oreg], [oreg], [oreg]}
+template stmdb [breg], {[oreg], [oreg]}
+template stmdb [breg], {[oreg]}
+
+template stmdb [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template stmdb [breg]!, {[oreg], [oreg]}
+template stmdb [breg]!, {[oreg]}
+
+template stmib [breg], {[oreg], [oreg], [oreg], [oreg]}
+template stmib [breg], {[oreg], [oreg]}
+template stmib [breg], {[oreg]}
+
+template stmib [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template stmib [breg]!, {[oreg], [oreg]}
+template stmib [breg]!, {[oreg]}

@@ -1,0 +1,7 @@
+include fields.inc
+
+template vstm  [breg], { s0, s1, s2, s3 }
+template vstm  [breg], { s0, s1 }
+
+template vstm  [breg], { d0, d1, d2, d3 }
+template vstm  [breg], { d0, d1 }

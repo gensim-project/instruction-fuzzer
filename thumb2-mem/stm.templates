@@ -1,0 +1,11 @@
+include fields.inc
+
+template stm [breg], {[breg], [breg], [breg], [breg]}
+template stm [breg], {[breg], [breg]}
+template stm [breg], {[breg]}
+
+template stm.w [breg], {[oreg], [oreg], [oreg], [oreg]}
+template stm.w [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+
+template stmdb [breg], {[oreg], [oreg], [oreg], [oreg]}
+template stmdb [breg]!, {[oreg], [oreg], [oreg], [oreg]}

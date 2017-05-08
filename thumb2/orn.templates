@@ -1,0 +1,4 @@
+include fields.inc
+
+template orn[s] [reg], [reg], [imm]
+template orn[s] [reg], [reg], [reg], [shift] [smallimm]

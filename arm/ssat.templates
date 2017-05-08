@@ -1,0 +1,5 @@
+include fields.inc
+
+template ssat [reg], [bit_imm], [reg]
+template ssat [reg], [bit_imm], [reg], lsl [shift_imm]
+template ssat [reg], [bit_imm], [reg], asr [shift_imm]

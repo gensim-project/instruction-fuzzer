@@ -1,0 +1,7 @@
+include fields.inc
+                                                                    
+template bic[s] [reg], [reg], [reg]  
+template bic[s] [reg], [reg], [reg], [shift] [shift_imm]
+template bic[s] [reg], [reg], [reg], [shift] [reg]
+template bic[s] [reg], [reg], [imm]
+                                  

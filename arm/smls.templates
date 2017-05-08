@@ -1,0 +1,4 @@
+include fields.inc
+
+template smlsd [reg], [reg], [reg], [reg]
+template smlsdx [reg], [reg], [reg], [reg]

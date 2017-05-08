@@ -1,0 +1,3 @@
+include fields.inc
+
+template uhasx [reg], [reg], [reg]
