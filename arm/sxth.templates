@@ -1,0 +1,4 @@
+include fields.inc
+
+template sxth [reg], [reg]
+template sxth [reg], [reg], [rotate]

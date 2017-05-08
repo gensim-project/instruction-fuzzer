@@ -1,0 +1,4 @@
+include fields.inc
+
+template sadd16 [reg], [reg], [reg]
+template sadd8 [reg], [reg], [reg]

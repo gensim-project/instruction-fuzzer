@@ -1,0 +1,4 @@
+include fields.inc
+
+template smuad [reg], [reg], [reg]
+template smuadx [reg], [reg], [reg]

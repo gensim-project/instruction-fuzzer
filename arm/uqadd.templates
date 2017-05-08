@@ -1,0 +1,4 @@
+include fields.inc
+
+template uqadd16 [reg], [reg], [reg]
+template uqadd8 [reg], [reg], [reg]

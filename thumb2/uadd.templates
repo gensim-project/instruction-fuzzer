@@ -1,0 +1,4 @@
+include fields.inc
+
+template uadd16 [reg], [reg], [reg]
+template uadd8 [reg], [reg], [reg]

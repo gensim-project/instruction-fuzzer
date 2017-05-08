@@ -1,0 +1,12 @@
+include fields.inc
+
+template ldrsb [greg], \[[breg], [imm4]\]
+template ldrsb.w [greg], \[[breg], [imm4]\]
+
+template ldrsb [oreg], \[[breg], [imm4]\]
+template ldrsb [oreg], \[[breg]\], [imm4]
+template ldrsb [oreg], \[[breg], [imm4]\]!
+
+template ldrsb [greg], \[[breg], [oreg]\]
+template ldrsb.w [greg], \[[breg], [oreg]\]
+

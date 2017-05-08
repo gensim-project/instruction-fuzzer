@@ -1,0 +1,4 @@
+include fields.inc
+
+template rev [loreg], [loreg]
+template rev.w [reg], [reg]

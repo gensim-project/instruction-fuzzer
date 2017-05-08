@@ -1,0 +1,7 @@
+include fields.inc
+
+template cmp [reg], [imm]
+template cmp [loreg], [loreg]
+template cmp [reg], [reg]
+template cmp.w [reg], [reg]
+template cmp.w [reg], [reg], [shift] [smallimm]

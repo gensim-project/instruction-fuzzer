@@ -1,0 +1,33 @@
+include fields.inc
+
+template ldm [breg], {[breg], [breg], [breg], [breg]}
+template ldm [breg], {[breg], [breg]}
+template ldm [breg], {[breg]}
+
+template ldm [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template ldm [breg]!, {[oreg], [oreg]}
+template ldm [breg]!, {[oreg]}
+
+template ldmda [breg], {[breg], [breg], [breg], [breg]}
+template ldmda [breg], {[breg], [breg]}
+template ldmda [breg], {[breg]}
+
+template ldmda [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template ldmda [breg]!, {[oreg], [oreg]}
+template ldmda [breg]!, {[oreg]}
+
+template ldmdb [breg], {[breg], [breg], [breg], [breg]}
+template ldmdb [breg], {[breg], [breg]}
+template ldmdb [breg], {[breg]}
+
+template ldmdb [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template ldmdb [breg]!, {[oreg], [oreg]}
+template ldmdb [breg]!, {[oreg]}
+
+template ldmib [breg], {[breg], [breg], [breg], [breg]}
+template ldmib [breg], {[breg], [breg]}
+template ldmib [breg], {[breg]}
+
+template ldmib [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+template ldmib [breg]!, {[oreg], [oreg]}
+template ldmib [breg]!, {[oreg]}

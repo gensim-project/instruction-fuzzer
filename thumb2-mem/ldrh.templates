@@ -1,0 +1,13 @@
+include fields.inc
+
+template ldrh.w [greg], \[[breg], [oreg]\]
+template ldrh.w [greg], \[[breg], [oreg], lsl 1 \]
+template ldrh.w [greg], \[[breg], [oreg], lsl 2 \]
+template ldrh.w [greg], \[[breg], [oreg], lsl 3 \]
+
+template ldrh.w [greg], \[[breg], #[imm4]\]
+template ldrh.w [greg], \[[breg], #[nimm4]\]
+
+template ldrh.w [oreg], \[[breg], #[imm4]\]
+template ldrh.w [oreg], \[[breg]\], #[imm4]
+template ldrh.w [oreg], \[[breg], #[imm4]\]!

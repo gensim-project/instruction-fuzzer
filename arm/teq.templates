@@ -1,0 +1,6 @@
+include fields.inc
+                        
+template teq [reg], [reg]  
+template teq [reg], [reg], [shift] [shift_imm]
+template teq [reg], [reg], [shift] [reg]
+template teq [reg], [imm]

@@ -1,0 +1,4 @@
+include fields.inc
+
+template vdiv.f32 [sreg], [sreg], [sreg]
+template vdiv.f64 [dreg], [dreg], [dreg]

@@ -1,0 +1,5 @@
+include fields.inc
+
+template uxth [loreg], [loreg]
+template uxth.w [reg], [reg]
+template uxth.w [reg], [reg], [rotate]

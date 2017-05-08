@@ -1,0 +1,4 @@
+include fields.inc
+
+template shsub16 [reg], [reg], [reg]
+template shsub8 [reg], [reg], [reg]

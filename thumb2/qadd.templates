@@ -1,0 +1,5 @@
+include fields.inc
+
+template qadd [reg], [reg], [reg]
+template qadd16 [reg], [reg], [reg]
+template qadd8 [reg], [reg], [reg]

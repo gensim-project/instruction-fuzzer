@@ -1,0 +1,6 @@
+include fields.inc
+
+template mvn[s] [reg], [imm]
+template mvns [loreg], [loreg]
+template mvn[s].w [reg], [reg]
+template mvn[s].w [reg], [reg], [shift] [smallimm]

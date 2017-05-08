@@ -1,0 +1,6 @@
+include fields.inc
+                                  
+template tst [reg], [reg]  
+template tst [reg], [reg], [shift] [shift_imm]
+template tst [reg], [reg], [shift] [reg]
+template tst [reg], [imm]

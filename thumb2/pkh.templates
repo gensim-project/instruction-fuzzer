@@ -1,0 +1,6 @@
+include fields.inc
+
+template pkhbt [reg], [reg], [reg]
+template pkhbt [reg], [reg], [reg], lsl [smallimm]
+template pkhtb [reg], [reg], [reg]
+template pkhtb [reg], [reg], [reg], asr [smallimm]

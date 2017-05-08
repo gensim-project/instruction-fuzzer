@@ -1,0 +1,4 @@
+include fields.inc
+
+template mul[s] [reg], [reg], [reg]
+

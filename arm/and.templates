@@ -1,0 +1,6 @@
+include fields.inc
+
+template and[s] [reg], [reg], [reg]
+template and[s] [reg], [reg], [reg], [shift] [shift_imm]
+template and[s] [reg], [reg], [reg], [shift] [reg]
+template and[s] [reg], [reg], [imm]

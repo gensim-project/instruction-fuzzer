@@ -1,0 +1,4 @@
+include fields.inc
+
+template sxtab16 [reg], [reg], [reg]
+template sxtab16 [reg], [reg], [reg], [rotate]

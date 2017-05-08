@@ -1,0 +1,8 @@
+include fields.inc
+
+template vzip.8 [dreg], [dreg]
+template vzip.16 [dreg], [dreg]
+
+template vzip.8 [qreg], [qreg]
+template vzip.16 [qreg], [qreg]
+template vzip.32 [qreg], [qreg]

@@ -1,0 +1,11 @@
+include fields.inc
+
+template ldm [breg], {[breg], [breg], [breg], [breg]}
+template ldm [breg], {[breg], [breg]}
+template ldm [breg], {[breg]}
+
+template ldm.w [breg], {[oreg], [oreg], [oreg], [oreg]}
+template ldm.w [breg]!, {[oreg], [oreg], [oreg], [oreg]}
+
+template ldmdb [breg], {[oreg], [oreg], [oreg], [oreg]}
+template ldmdb [breg]!, {[oreg], [oreg], [oreg], [oreg]}

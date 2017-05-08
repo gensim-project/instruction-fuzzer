@@ -1,0 +1,3 @@
+include fields.inc
+
+template usat16 [reg], [smallimm], [reg]

@@ -1,0 +1,3 @@
+include fields.inc
+
+template uqsub8 [reg], [reg], [reg]

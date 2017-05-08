@@ -1,0 +1,9 @@
+include fields.inc
+
+template movs [loreg], [imm]
+template mov[s].w [reg], [imm]
+template movw [reg], [imm]
+template mov [reg], [reg]
+template movs [loreg], [loreg]
+template mov[s].w [reg], [reg]
+template movt [reg], [imm]

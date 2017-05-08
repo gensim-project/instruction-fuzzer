@@ -1,0 +1,3 @@
+include fields.inc
+
+template smull [reg], [reg], [reg], [reg]

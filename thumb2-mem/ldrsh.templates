@@ -1,0 +1,11 @@
+include fields.inc
+
+template ldrsh.w [greg], \[[breg], [oreg]\]
+// ldrh with shifted offset
+
+template ldrsh.w [greg], \[[breg], #[imm4]\]
+template ldrsh.w [greg], \[[breg], #[nimm4]\]
+
+template ldrsh.w [oreg], \[[breg], #[imm4]\]
+template ldrsh.w [oreg], \[[breg]\], #[imm4]
+template ldrsh.w [oreg], \[[breg], #[imm4]\]!

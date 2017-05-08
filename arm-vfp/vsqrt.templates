@@ -1,0 +1,4 @@
+include fields.inc
+
+template vsqrt.f32 [sreg], [sreg]
+template vsqrt.f64 [dreg], [dreg]

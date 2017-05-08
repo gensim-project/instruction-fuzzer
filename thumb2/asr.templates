@@ -1,0 +1,6 @@
+include fields.inc
+
+template asrs [loreg], [loreg], [smallimm]
+template asr[s].w [reg], [reg], [imm]
+template asrs [loreg], [loreg]
+template asr[s].w [reg], [reg], [reg]

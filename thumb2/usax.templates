@@ -1,0 +1,3 @@
+include fields.inc
+
+template usax [reg], [reg], [reg]

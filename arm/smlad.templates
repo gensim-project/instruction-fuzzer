@@ -1,0 +1,4 @@
+include fields.inc
+
+template smlad [reg], [reg], [reg], [reg]
+template smladx [reg], [reg], [reg], [reg]

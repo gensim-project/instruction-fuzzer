@@ -1,0 +1,4 @@
+include fields.inc
+
+template veor [qreg], [qreg], [qreg]
+template veor [dreg], [dreg], [dreg]

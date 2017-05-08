@@ -1,0 +1,3 @@
+include fields.inc
+
+template qdsub [reg], [reg], [reg]

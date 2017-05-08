@@ -1,0 +1,3 @@
+include fields.inc
+
+template usub16 [reg], [reg], [reg]

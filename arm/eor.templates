@@ -1,0 +1,6 @@
+include fields.inc
+
+template eor[s] [reg], [reg], [reg]
+template eor[s] [reg], [reg], [reg], [shift] [shift_imm]
+template eor[s] [reg], [reg], [reg], [shift] [reg]
+template eor[s] [reg], [reg], [imm]

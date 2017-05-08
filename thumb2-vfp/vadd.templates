@@ -1,0 +1,4 @@
+include fields.inc
+
+template vadd.f32 [sreg], [sreg], [sreg]
+template vadd.f64 [dreg], [dreg], [dreg]

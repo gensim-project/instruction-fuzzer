@@ -1,0 +1,13 @@
+include fields.inc
+
+template vadd.f32 [sreg], [sreg], [sreg]
+template vadd.f64 [dreg], [dreg], [dreg]
+
+template vadd.f32 [dreg], [dreg], [dreg]
+template vadd.f32 [qreg], [qreg], [qreg]
+
+template vadd.i32 [dreg], [dreg], [dreg]
+template vadd.i32 [qreg], [qreg], [qreg]
+
+template vadd.i16 [dreg], [dreg], [dreg]
+template vadd.i16 [qreg], [qreg], [qreg]

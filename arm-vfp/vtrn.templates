@@ -1,0 +1,7 @@
+include fields.inc
+
+vtrn.i16 [dreg], [dreg], [dreg]
+vtrn.i16 [qreg], [qreg], [qreg]
+
+vtrn.i32 [dreg], [dreg], [dreg]
+vtrn.i32 [qreg], [qreg], [qreg]

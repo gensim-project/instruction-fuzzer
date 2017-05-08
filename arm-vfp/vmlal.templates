@@ -1,0 +1,11 @@
+include fields.inc
+
+field low16_dreg d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15
+field low8_dreg d0 d1 d2 d3 d4 d5 d6 d7 
+
+field index_0t1 0 1
+field index_0t3 0 1 2 3
+
+template vmlal.u32 [qreg], [dreg], [low16_dreg] \[ [index_0t1] \]
+
+template vmlal.s16 [qreg], [dreg], [low8_dreg] \[ [index_0t3] \]

@@ -1,0 +1,3 @@
+include fields.inc
+
+template uqasx [reg], [reg], [reg]

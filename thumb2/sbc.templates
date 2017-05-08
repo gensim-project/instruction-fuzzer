@@ -1,0 +1,6 @@
+include fields.inc
+
+template sbc[s] [reg], [reg], [imm]
+template sbcs [loreg], [loreg]
+template sbc[s].w [reg], [reg], [reg]
+template sbc[s].w [reg], [reg], [reg], [shift] [smallimm]

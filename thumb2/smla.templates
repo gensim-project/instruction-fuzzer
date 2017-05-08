@@ -1,0 +1,6 @@
+include fields.inc
+
+template smlabb [reg], [reg], [reg], [reg]
+template smlabt [reg], [reg], [reg], [reg]
+template smlatb [reg], [reg], [reg], [reg]
+template smlatt [reg], [reg], [reg], [reg]

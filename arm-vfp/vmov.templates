@@ -1,0 +1,19 @@
+include fields.inc
+
+template vmov.f32 [sreg], [fpimm]
+template vmov.f64 [dreg], [fpimm]
+
+template vmov s0, s1, [greg], [greg]
+template vmov [greg], [greg], s0, s1
+
+template vmov s30, s31, [greg], [greg]
+template vmov [greg], [greg], s30, s31
+
+template vmov [dreg], [greg], [greg]
+template vmov [greg], [greg], [dreg]
+
+template vmov [sreg], [greg]
+template vmov [greg], [sreg]
+
+template vmov.f32 [sreg], [sreg]
+template vmov.f64 [dreg], [dreg]

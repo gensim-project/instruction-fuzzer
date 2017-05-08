@@ -1,0 +1,4 @@
+include fields.inc
+
+template pkhbt [reg], [reg], [reg]
+template pkhbt [reg], [reg], [reg], lsl #[imm1t32]

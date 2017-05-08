@@ -1,0 +1,4 @@
+include fields.inc
+
+template smmul [reg], [reg], [reg]
+template smmulr [reg], [reg], [reg]

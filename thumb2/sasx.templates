@@ -1,0 +1,3 @@
+include fields.inc
+
+template sasx [reg], [reg], [reg]

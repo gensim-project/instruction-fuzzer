@@ -1,0 +1,6 @@
+include fields.inc
+                                  
+template mvn [reg], [reg]  
+template mvn [reg], [reg], [shift] [shift_imm]
+template mvn [reg], [reg], [shift] [reg]
+template mvn [reg], [imm]

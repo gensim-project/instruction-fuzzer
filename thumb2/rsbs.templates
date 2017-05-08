@@ -1,0 +1,6 @@
+include fields.inc
+
+template rsbs [loreg], [loreg]
+template rsb[s].w [reg], [reg], [imm]
+template rsb[s] [reg], [reg], [reg]
+template rsb[s] [reg], [reg], [reg], [shift] [smallimm]

@@ -1,0 +1,4 @@
+include fields.inc
+
+template smlal [reg], [reg], [reg], [reg]
+
