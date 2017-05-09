@@ -28,25 +28,4 @@ private:
 	uint32_t _processed_templates;
 };
 
-class ARMAssemblyTarget : public AssemblyTarget
-{
-public:
-	ARMAssemblyTarget(std::ostream &target);
-	
-	virtual void PrintHeader() override;
-	virtual void PrintFooter() override;
-	
-	virtual void PrintTemplate(const Template &) override;
-};
-
-class ThumbAssemblyTarget : public ARMAssemblyTarget
-{
-public:
-	ThumbAssemblyTarget(std::ostream &target);
-	
-	virtual void PrintHeader() override;
-};
-
-
-
 #endif
