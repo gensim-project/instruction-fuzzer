@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-#include "AssemblyTarget.h"
+#include "../AssemblyTarget.h"
+#include "../ComponentManager.h"
 
 class ThumbAssemblyTarget : public AssemblyTarget
 {
@@ -18,7 +19,7 @@ public:
 };
 
 
-ThumbAssemblyTarget::ThumbAssemblyTarget(std::ostream &target) : ARMAssemblyTarget(target)
+ThumbAssemblyTarget::ThumbAssemblyTarget(std::ostream &target) : AssemblyTarget(target)
 {
 	
 }
