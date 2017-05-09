@@ -3,7 +3,7 @@ generator := ../generator/generator
 as := arm-unknown-linux-gnueabi-as -march=armv7-a -mcpu=cortex-a15
 objcopy := arm-unknown-linux-gnueabi-objcopy
 
-gensim-root := ../../../../../
+gensim-root := /home/harry/Work/gensim
 qemu := /home/harry/Work/qemu/qemu-2.5.0/arm-linux-user/qemu-arm
 model := $(gensim-root)/arm_v5_dynamic/output_blockjit/armv5e.dll
 arcsim-bin := $(gensim-root)/arcsim/bin/arcsim
