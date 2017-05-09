@@ -1,0 +1,4 @@
+syntax:regexp
+\.o$
+harness/.+/harness
+generator/generator	
