@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-#include "AssemblyTarget.h"
+#include "../AssemblyTarget.h"
+#include "../ComponentManager.h"
 
 class ARMAssemblyTarget : public AssemblyTarget
 {
@@ -58,7 +59,4 @@ void ARMAssemblyTarget::PrintTemplate(const Template &t)
 	print("2:\n");
 }
 
-
-	
 RegisterComponent(AssemblyTarget, ARMAssemblyTarget, "arm", "ARM", std::ostream &);
-
