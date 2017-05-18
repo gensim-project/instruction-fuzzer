@@ -1,7 +1,7 @@
 CXXFLAGS=-std=c++11 -g -I$(PWD) -O2
 LDFLAGS=-static
 
-arches := arm arm-mem arm-vfp #thumb2 thumb2-it thumb2-vfp thumb2-mem
+arches := arm arm-mem arm-vfp armv8-native #thumb2 thumb2-it thumb2-vfp thumb2-mem
 harnesses := $(arches:%=%/harness)
 
 arm-cxx := arm-unknown-linux-gnueabi-g++
@@ -33,6 +33,7 @@ thumb2-mem-cxx-flags := -march=armv7-a -mthumb-interwork $(CXXFLAGS)
 thumb2-mem-ld-flags := -mthumb-interwork -Wl,--use-blx $(LDFLAGS)
 
 all : $(harnesses)
+.phony : $(harnesses)
 
 clean : 
 	make $(arches:%=clean-%)
@@ -49,6 +50,6 @@ clean-%:
 %/test_fn.o : %/test_fn.S
 	$($*-cxx) $($*-cxx-flags) -c $*/test_fn.S -o $@
 
-%/harness : %/main.o %/harness.o %/test_fn.o
-	$($*-cxx) $($*-ld-flags) $^ -o $@
+%/harness : 
+	make -C $*
 
