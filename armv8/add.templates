@@ -1,0 +1,31 @@
+include fields.inc
+
+template add [xreg], [xreg], [xreg]
+template add [wreg], [wreg], [wreg]
+
+template add [xreg], sp, [xreg]
+template add [wreg], wsp, [wreg]
+
+template add [xreg], [xreg], [imm]
+template add [wreg], [wreg], [imm]
+
+template add [xreg], [xreg], [imm], lsl #12
+template add [wreg], [wreg], [imm], lsl #12
+
+template add [xreg], [xreg], [xreg], [shift_type] [shift_amt_x]
+template add [wreg], [wreg], [wreg], [shift_type] [shift_amt_w]
+
+template adds [xreg], [xreg], [xreg]
+template adds [wreg], [wreg], [wreg]
+
+template adds [xreg], sp, [xreg]
+template adds [wreg], wsp, [wreg]
+
+template adds [xreg], [xreg], [imm]
+template adds [wreg], [wreg], [imm]
+
+template adds [xreg], [xreg], [imm], lsl #12
+template adds [wreg], [wreg], [imm], lsl #12
+
+template adds [xreg], [xreg], [xreg], [shift_type] [shift_amt_x]
+template adds [wreg], [wreg], [wreg], [shift_type] [shift_amt_w]

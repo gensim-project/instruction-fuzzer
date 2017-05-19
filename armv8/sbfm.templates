@@ -1,0 +1,4 @@
+include fields.inc
+
+template sbfm [xreg], [xreg], [shift_amt_x], [shift_amt_x]
+template sbfm [wreg], [wreg], [shift_amt_w], [shift_amt_w]

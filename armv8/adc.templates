@@ -1,0 +1,7 @@
+include fields.inc
+
+template adc [xreg], [xreg], [xreg]
+template adc [wreg], [wreg], [wreg]
+
+template adcs [xreg], [xreg], [xreg]
+template adcs [wreg], [wreg], [wreg]
