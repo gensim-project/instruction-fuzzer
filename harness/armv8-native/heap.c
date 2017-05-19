@@ -1,16 +1,14 @@
 #include "heap.h"
 #include "semihosting.h"
+#include "printf/printf.h"
 
-static char *_brk;
+char heap[1024*1024];
+
+static char *_brk = heap;
+
+
 
 void heap_init() {
-	angel_heap_info_t heapinfo;
-	heapinfo.heap_base = 0;
-	heapinfo.heap_limit = 0;
-	
-	angel_heapinfo(&heapinfo);
-	
-	_brk = (char*)heapinfo.heap_base;
 }
 
 void *malloc(unsigned long size) {
