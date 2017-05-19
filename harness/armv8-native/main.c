@@ -13,7 +13,7 @@ void puts(const char *c) {
 	}
 }
 
-char buffer[128];
+char buffer[0x1000];
 
 uint64_t random() {
 	const  uint64_t key = 0x1f2f3f4f5f6f7f8full;
@@ -81,6 +81,10 @@ int main() {
 	
 	// open test file
 	int fd = angel_open(filename, 0);
+	if(fd < 0) {
+		printf("Could not open file\n");
+		return 1;
+	}
 	printf("Got fd %x\n", fd);
 	
 	// load file under test
