@@ -27,7 +27,7 @@ void generate_state(state_t *state) {
 	for(int i = 0; i < REG_COUNT; ++i) {
 		state->regs[i] = random();
 	}
-	state->flags = random();
+	state->flags = random() & 0xf0000000;
 }
 
 void copy_test_to_slot(test_t *test) {

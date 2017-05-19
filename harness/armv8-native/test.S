@@ -27,6 +27,10 @@ execute_test:
 	ldp x26, x27, [x0, 16 * 13]
 	ldp x28, x29, [x0, 16 * 14]
 	ldr x30, [x0, 16 * 15]
+	
+	ldr x1, [x0, 8 * 31]
+	msr nzcv, x1
+	
 	ldp x0, x1, [x0]
 	
 	// execute test slot
@@ -57,6 +61,9 @@ test_slot:
 	mov x2, x0
 	ldp x0, x1, [sp], #16 // 112 out_x0 out_x1
 	stp x0, x1, [x2]
+	
+	mrs x0, nzcv
+	str x0, [x2, 8*31]
 	
 	add sp, sp, #16
 	
