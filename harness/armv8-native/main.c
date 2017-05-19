@@ -6,6 +6,8 @@
 
 #include <stdint-gcc.h>
 
+#define ITERATIONS 10
+
 void puts(const char *c) {
 	while(*c){
 		angel_writec(*c);
@@ -101,7 +103,9 @@ int main() {
 	printf("Found %u tests\n", test_count);
 	
 	for(int i = 0; i < test_count; ++i) {
-		run_test(&tests[i]);
+		for(int j = 0; j < ITERATIONS; ++j) {
+			run_test(&tests[i]);
+		}
 	}
 	
 	free(data);
