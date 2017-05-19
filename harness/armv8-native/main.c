@@ -107,4 +107,5 @@ int main() {
 	free(data);
 	
 	printf("Tests finished.\n");
+	angel_reportexception(0x20026);
 }

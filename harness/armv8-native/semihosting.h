@@ -11,6 +11,7 @@ typedef unsigned long fd_t;
 #define SYS_FLEN 0x0C
 #define SYS_GET_CMDLINE 0x15
 #define SYS_HEAPINFO 0x16
+#define SYS_REPORTEXCEPTION 0x18
 
 typedef struct {
 	void *heap_base;
@@ -28,3 +29,4 @@ int angel_read(int fd, const char *data, unsigned long bytes);
 int angel_flen(int fd);
 int angel_get_cmdline(char *buffer, unsigned long buffer_size);
 int angel_heapinfo(angel_heap_info_t *info);
+int angel_reportexception(int reason);

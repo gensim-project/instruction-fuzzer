@@ -88,3 +88,7 @@ int angel_get_cmdline(char *buffer, unsigned long buffer_size) {
 int angel_heapinfo(angel_heap_info_t *info) {
 	return semihosting_call(SYS_HEAPINFO, &info);
 }
+
+int angel_reportexception(int reason) {
+	return semihosting_call(SYS_REPORTEXCEPTION, reason);
+}
