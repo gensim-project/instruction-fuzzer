@@ -1,0 +1,7 @@
+include fields.inc
+
+template asr [xreg], [xreg], [xreg]
+template asr [wreg], [wreg], [wreg]
+
+template asr [xreg], [xreg], [shift_amt_x]
+template asr [wreg], [wreg], [shift_amt_w]
