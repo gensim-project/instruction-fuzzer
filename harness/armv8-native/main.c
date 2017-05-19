@@ -73,6 +73,8 @@ const char *get_input_file_ptr(const char *args) {
 }
 
 int main() {
+	heap_init();
+	
 	// get filename to load
 	angel_get_cmdline(buffer, sizeof(buffer));
 	
