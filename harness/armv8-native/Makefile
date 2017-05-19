@@ -4,10 +4,10 @@ CC=aarch64-linux-gnu-gcc
 LD=aarch64-linux-gnu-ld
 
 CXXFLAGS=-std=c++11 -g -I$(PWD) -O2  -MMF
-CFLAGS=-std=gnu11 -g -O2 -Werror=implicit-function-declaration
+CFLAGS=-std=gnu11 -g -O2 -Werror=implicit-function-declaration -mgeneral-regs-only
 LDFLAGS=-static
 
-sources = harness.o test_fn.o semihosting.o semihosting_call.o reset.o arch.o vectors.o exception.o main.o heap.o printf/vsnprintf.o test.o
+sources = harness.o semihosting.o semihosting_call.o reset.o arch.o vectors.o exception.o main.o heap.o printf/vsnprintf.o test.o
 objects = $(sources:%=build/%)
 
 all : harness
