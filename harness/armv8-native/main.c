@@ -105,4 +105,6 @@ int main() {
 	}
 	
 	free(data);
+	
+	printf("Tests finished.\n");
 }
