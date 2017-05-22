@@ -4,11 +4,10 @@ as := aarch64-linux-gnu-as
 objcopy := aarch64-linux-gnu-objcopy
 
 gensim-root := /home/harry/Work/gensim
-qemu := /home/harry/Work/qemu/qemu-2.5.0/arm-linux-user/qemu-arm
+qemu := qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
 model := $(gensim-root)/arm_v5_dynamic/output_blockjit/armv5e.dll
 arcsim-bin := $(gensim-root)/arcsim/bin/arcsim
 arcsim := $(arcsim-bin) -p $(model) -s armv5e -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
-
 
 test-count := 1
 
@@ -20,6 +19,8 @@ objects  := $(formats:%=%.o)
 
 results-qemu := $(formats:%=results/%.qemu)
 results-arcsim := $(formats:%=results/%.arcsim)
+
+qemu-results : $(results-qemu)
 
 results := $(results-qemu) $(results-arcsim)
 result-checks := $(formats:%=result-%)
@@ -37,11 +38,11 @@ clean :
 
 results/%.qemu : %.bin $(harness)
 	mkdir -p results
-	-$(qemu) -r 4.3.4 $(harness) $*.bin $(test-count) $@
+	-$(qemu) -kernel ../harness/armv8-native/harness -append $*.bin 2> $@
 
 results/%.arcsim : %.bin $(arcsim-bin) $(model)
 	mkdir -p results
-	-$(arcsim) -e $(harness) -- $*.bin $(test-count) $@
+	-$(arcsim) -e $(harness) -- $*.bin $(test-count) > $@
 
 %.S : %.templates $(generator)
 	$(generator) armv8 $^ > $@
