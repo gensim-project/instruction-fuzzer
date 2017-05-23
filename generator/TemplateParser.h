@@ -6,16 +6,28 @@
 #include <fstream>
 #include <memory>
 
+class astnode;
+
 class TemplateParser
 {
 public:
-	bool Parse(std::ifstream &input_file);
+	bool Parse(const char *filename);
 	
 	TemplateCollection &Get();
+	
+	void ProcessDocument(astnode *doc);
 private:
-	bool ParseField(const std::string &line);
-	bool ParseTemplate(const std::string &line);
-	bool ParseInclude(const std::string &line);
+	void VisitDocument(astnode *doc);
+	
+	void VisitTemplateStatement(astnode *doc);
+	void VisitTemplateChunkList(astnode *doc, Template *parent);
+	void VisitTemplateChunkText(astnode *doc, Template *parent);
+	void VisitTemplateChunkField(astnode *doc, Template *parent);
+	
+	void VisitFieldStatement(astnode *doc);
+	void VisitFieldBodyList(astnode *doc, FieldDescriptor *field);
+	void VisitFieldBodyItemText(astnode *doc, FieldDescriptor *field);
+	void VisitFieldBodyItemGenerator(astnode *doc, FieldDescriptor *field);
 	
 	TemplateCollection _templates;
 	FieldDescriptorCollection _fields;
