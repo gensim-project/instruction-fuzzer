@@ -4,3 +4,6 @@ harness/.+/harness$
 generator/generator	
 .+/results/.+\.qemu$
 .+/results/.+\.arcsim$
+nbproject/
+\.bin$
+
