@@ -1,0 +1,83 @@
+%{
+#include "fuzzer-parser.h"
+#include "TemplateParser.h"
+
+#include <cstdio>
+#include <iostream>
+#include <vector>
+
+#include "fuzzer-syntax.tabs.h"
+#include "fuzzer-syntax.l.h"
+
+class astnode; 
+
+void yyerror(void *yyscanner, TemplateParser * parser, const char *s);
+
+%}
+
+%define api.pure full
+%lex-param {void *yyscanner}
+%parse-param {void *yyscanner} { TemplateParser * parser }
+
+%union {
+    uint64_t ival;
+    char *sval;
+    astnode *ast_node;
+}
+
+%token <sval> FILENAME TEXT FIELDID FIELDTEXT TEMPLATEID TEMPLATETEXT
+%token <ival> 
+%token ENDOFFILE INCLUDE TEMPLATE FIELD SEMICOLON OBRACKET CBRACKET OBRACE CBRACE NEWLINE
+
+%type <ast_node> fuzzer_document statement_list include_statement template_statement template_chunk_list template_chunk text_template_chunk field_template_chunk field_statement field_body_list field_body_item field_body_item_text field_body_item_generator generator_body
+
+
+%%
+
+fuzzer_document : statement_list ENDOFFILE { $$ = $1; parser->ProcessDocument($$); }
+
+statement_list : 
+	statement_list include_statement NEWLINE | 
+	statement_list template_statement NEWLINE {$$ = $1; $$->AddChild($2); } | 
+	statement_list field_statement NEWLINE {$$ = $1; $$->AddChild($2); } | 
+	statement_list NEWLINE { $$ = $1; } | 
+	{$$ = CreateNode(Node_Document); }
+
+include_statement : INCLUDE FILENAME { parse_file(parser, $2); }
+
+
+
+template_statement : TEMPLATE template_chunk_list { $$ = CreateNode(Node_Template); $$->AddChild($2); }
+
+template_chunk_list : template_chunk_list template_chunk { $$ = $1; $$->AddChild($2); } | {$$ = CreateNode(Node_TemplateChunkList); }
+
+template_chunk : text_template_chunk {$$ = $1;}| field_template_chunk {$$ = $1;};
+
+text_template_chunk : TEMPLATETEXT { $$ = CreateNode(Node_TemplateChunkText); $$->AddChild(CreateNodeStr($1)); }
+
+field_template_chunk : OBRACKET FIELDID CBRACKET { $$ = CreateNode(Node_TemplateChunkField); $$->AddChild(CreateNodeStr($2)); }
+
+
+
+field_statement : FIELD FIELDID field_body_list { printf("field %s ", $2); $$ = CreateNode(Node_Field); $$->AddChild(CreateNodeStr($2)); $$->AddChild($3); }
+
+field_body_list : field_body_list field_body_item { $$ = $1; $$->AddChild($2); } | {$$ = CreateNode(Node_FieldBodyList); }
+
+field_body_item : field_body_item_text { $$ = $1; } | field_body_item_generator { $$ = $1; };
+
+field_body_item_text : FIELDTEXT { $$ = CreateNode(Node_FieldBodyItemText); $$->AddChild(CreateNodeStr($1)); }
+
+field_body_item_generator : OBRACE generator_body CBRACE { $$ = CreateNode(Node_FieldBodyItemGenerator); $$->AddChild($2); }
+
+
+generator_body : ;
+
+%%
+#include "fuzzer-syntax.tabs.h"
+#include "fuzzer-syntax.l.h"
+
+extern int l_debug;
+
+void yyerror(void *yyscanner, TemplateParser * parser, const char *s) {
+	std::cout << "Parse error! Line: " << yyget_lineno(yyscanner) << ", Message: " << s << std::endl;
+}

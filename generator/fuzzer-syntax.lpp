@@ -1,0 +1,59 @@
+%{
+
+#include <iostream>
+
+#define yyerminate() return ENDOFFILE
+
+#include "TemplateParser.h"
+#include "fuzzer-parser.h"
+
+#include "fuzzer-syntax.tabs.h"
+
+int l_debug = 0;
+
+%}
+
+%option reentrant bison-bridge
+
+%option noyywrap
+%option yylineno
+
+%x ML_COMMENT
+%x ML_FIELDID
+%x ML_FIELD
+%x ML_TEMPLATE
+%x ML_TEMPLATE_FIELDID
+
+%%
+
+"/*" BEGIN(ML_COMMENT);
+
+<ML_COMMENT>"*/" BEGIN(INITIAL);
+<ML_COMMENT>. ;
+<ML_COMMENT>\n ;
+
+"//"[^\n]* ;
+
+[ \t] {printf("WHITESPACE "); }
+<<EOF>> { printf("EOF "); return ENDOFFILE; }
+
+"\n" { return NEWLINE; }
+
+"field"    { BEGIN(ML_FIELDID); printf("FIELD "); return FIELD; }
+"include"  { printf("INCLUDE "); return INCLUDE; }
+"template"[ \t]* { BEGIN(ML_TEMPLATE); printf("TEMPLATE "); return TEMPLATE; }
+
+"<"[a-zA-Z0-9./]*">" { printf("FILENAME "); yylval->sval = strdup(yytext); return FILENAME; }
+
+<ML_FIELDID>[a-zA-Z_]+  { BEGIN(ML_FIELD); printf("FIELDID(%s) ", yytext); yylval->sval = strdup(yytext); return FIELDID; }
+
+<ML_FIELD>[a-zA-Z0-9_]+ { printf("FIELDTEXT(%s) ", yytext);yylval->sval = strdup(yytext); return FIELDTEXT; }
+<ML_FIELD>"\n" { BEGIN(INITIAL); return NEWLINE; }
+
+<ML_TEMPLATE>[a-zA-Z0-9_, ]+ { printf("TEMPLATETEXT(%s) ", yytext);yylval->sval = strdup(yytext); return TEMPLATETEXT; }
+<ML_TEMPLATE>"\n" { BEGIN(INITIAL); return NEWLINE; }
+<ML_TEMPLATE>"[" { BEGIN(ML_TEMPLATE_FIELDID); return OBRACKET; }
+<ML_TEMPLATE_FIELDID>"]" { BEGIN(ML_TEMPLATE); return CBRACKET; }
+<ML_TEMPLATE_FIELDID>[a-zA-Z_]+  { printf("FIELDID(%s) ", yytext); yylval->sval = strdup(yytext); return FIELDID; }
+
+%%

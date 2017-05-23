@@ -16,16 +16,10 @@ int main(int argc, char **argv)
 		printf("Usage: %s [assembly format] [template file]\n", argv[0]);
 		return 1;
 	}
-	
-	std::ifstream input(argv[2]);
-	if(!input.good()) {
-		perror("Could not open input file");
-		return 1;
-	}
-	
+
 	TemplateParser parser;
 	
-	if(!parser.Parse(input)) return 1;
+	if(!parser.Parse(argv[2])) return 1;
 	
 	AssemblyTarget *assembler;
 	if(!GetComponentInstance<AssemblyTarget, std::ostream&>(argv[1], assembler, std::cout)) {
