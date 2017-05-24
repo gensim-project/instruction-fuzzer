@@ -19,6 +19,7 @@ int l_debug = 0;
 %option yylineno
 
 %x ML_COMMENT
+%x ML_FILENAME
 %x ML_FIELDID
 %x ML_FIELD
 %x ML_TEMPLATE
@@ -34,26 +35,31 @@ int l_debug = 0;
 
 "//"[^\n]* ;
 
-[ \t] {printf("WHITESPACE "); }
-<<EOF>> { printf("EOF "); return ENDOFFILE; }
+[ \t] { printf("WHITESPACE "); }
+
 
 "\n" { return NEWLINE; }
 
-"field"    { BEGIN(ML_FIELDID); printf("FIELD "); return FIELD; }
-"include"  { printf("INCLUDE "); return INCLUDE; }
-"template"[ \t]* { BEGIN(ML_TEMPLATE); printf("TEMPLATE "); return TEMPLATE; }
+"field"    							{ BEGIN(ML_FIELDID); return FIELD; }
+"include "  						{ BEGIN(ML_FILENAME); return INCLUDE; }
+"template"[ \t]* 					{ BEGIN(ML_TEMPLATE); return TEMPLATE; }
 
-"<"[a-zA-Z0-9./]*">" { printf("FILENAME "); yylval->sval = strdup(yytext); return FILENAME; }
+<ML_FILENAME>[a-zA-Z0-9./]+ 		{ yylval->sval = strdup(yytext); return FILENAME; }
+<ML_FILENAME>"\n" 					{ BEGIN(INITIAL); return NEWLINE; }
 
-<ML_FIELDID>[a-zA-Z_]+  { BEGIN(ML_FIELD); printf("FIELDID(%s) ", yytext); yylval->sval = strdup(yytext); return FIELDID; }
+<ML_FIELDID>[ \t]					{}
+<ML_FIELDID>[a-zA-Z_]+  			{ BEGIN(ML_FIELD); yylval->sval = strdup(yytext); return FIELDID; }
 
-<ML_FIELD>[a-zA-Z0-9_]+ { printf("FIELDTEXT(%s) ", yytext);yylval->sval = strdup(yytext); return FIELDTEXT; }
-<ML_FIELD>"\n" { BEGIN(INITIAL); return NEWLINE; }
+<ML_FIELD>[ \t]                     {}
+<ML_FIELD>[a-zA-Z0-9_]+ 			{ yylval->sval = strdup(yytext); return FIELDTEXT; }
+<ML_FIELD>"\n" 						{ BEGIN(INITIAL); return NEWLINE; }
 
-<ML_TEMPLATE>[a-zA-Z0-9_, ]+ { printf("TEMPLATETEXT(%s) ", yytext);yylval->sval = strdup(yytext); return TEMPLATETEXT; }
-<ML_TEMPLATE>"\n" { BEGIN(INITIAL); return NEWLINE; }
-<ML_TEMPLATE>"[" { BEGIN(ML_TEMPLATE_FIELDID); return OBRACKET; }
-<ML_TEMPLATE_FIELDID>"]" { BEGIN(ML_TEMPLATE); return CBRACKET; }
-<ML_TEMPLATE_FIELDID>[a-zA-Z_]+  { printf("FIELDID(%s) ", yytext); yylval->sval = strdup(yytext); return FIELDID; }
+<ML_TEMPLATE>[a-zA-Z0-9_, ]+ 		{ yylval->sval = strdup(yytext); return TEMPLATETEXT; }
+<ML_TEMPLATE>"[" 					{ BEGIN(ML_TEMPLATE_FIELDID); return OBRACKET; }
+<ML_TEMPLATE>"\n" 					{ BEGIN(INITIAL); return NEWLINE; }
+
+<ML_TEMPLATE_FIELDID>[ \t] 			{}
+<ML_TEMPLATE_FIELDID>"]" 			{ BEGIN(ML_TEMPLATE); return CBRACKET; }
+<ML_TEMPLATE_FIELDID>[a-zA-Z_]+  	{ yylval->sval = strdup(yytext); return FIELDID; }
 
 %%
