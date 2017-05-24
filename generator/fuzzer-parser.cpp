@@ -25,10 +25,5 @@ void astnode::SetData(const char *data) {
 
 
 void parse_file(TemplateParser *parser, const char *filename) {
-	assert(filename[0] == '<');
-	assert(filename[strlen(filename)-1] == '>');
-	char *fname = strdup(filename+1);
-	fname[strlen(fname)-1] = '\0';
-	parser->Parse(fname);
-	free(fname);
+	parser->Parse(filename);
 }

@@ -34,7 +34,7 @@ void yyerror(void *yyscanner, TemplateParser * parser, const char *s);
 
 %%
 
-fuzzer_document : statement_list ENDOFFILE { $$ = $1; parser->ProcessDocument($$); }
+fuzzer_document : statement_list { $$ = $1; parser->ProcessDocument($$); }
 
 statement_list : 
 	statement_list include_statement NEWLINE | 
@@ -59,7 +59,7 @@ field_template_chunk : OBRACKET FIELDID CBRACKET { $$ = CreateNode(Node_Template
 
 
 
-field_statement : FIELD FIELDID field_body_list { printf("field %s ", $2); $$ = CreateNode(Node_Field); $$->AddChild(CreateNodeStr($2)); $$->AddChild($3); }
+field_statement : FIELD FIELDID field_body_list { $$ = CreateNode(Node_Field); $$->AddChild(CreateNodeStr($2)); $$->AddChild($3); }
 
 field_body_list : field_body_list field_body_item { $$ = $1; $$->AddChild($2); } | {$$ = CreateNode(Node_FieldBodyList); }
 
