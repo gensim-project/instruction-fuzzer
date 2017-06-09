@@ -22,6 +22,7 @@ int l_debug = 0;
 %x ML_FILENAME
 %x ML_FIELDID
 %x ML_FIELD
+%x ML_FIELD_STRING
 %x ML_TEMPLATE
 %x ML_TEMPLATE_FIELDID
 
@@ -35,7 +36,7 @@ int l_debug = 0;
 
 "//"[^\n]* ;
 
-[ \t] { printf("WHITESPACE "); }
+[ \t] { }
 
 
 "\n" { return NEWLINE; }
@@ -52,9 +53,11 @@ int l_debug = 0;
 
 <ML_FIELD>[ \t]                     {}
 <ML_FIELD>[a-zA-Z0-9_]+ 			{ yylval->sval = strdup(yytext); return FIELDTEXT; }
+<ML_FIELD>\"[^"]*\" 				{ yylval->sval = strdup(yytext+1); yylval->sval[strlen(yylval->sval)-1] = '\0'; return FIELDTEXT; }
 <ML_FIELD>"\n" 						{ BEGIN(INITIAL); return NEWLINE; }
 
-<ML_TEMPLATE>[a-zA-Z0-9_, ]+ 		{ yylval->sval = strdup(yytext); return TEMPLATETEXT; }
+<ML_TEMPLATE>[^\\\[\]]+ 		{ yylval->sval = strdup(yytext); return TEMPLATETEXT; }
+<ML_TEMPLATE>"\\"[\[\]]             { yylval->sval = strdup(yytext+1); return TEMPLATETEXT; }
 <ML_TEMPLATE>"[" 					{ BEGIN(ML_TEMPLATE_FIELDID); return OBRACKET; }
 <ML_TEMPLATE>"\n" 					{ BEGIN(INITIAL); return NEWLINE; }
 
