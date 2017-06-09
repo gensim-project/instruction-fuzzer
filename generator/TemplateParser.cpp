@@ -9,7 +9,7 @@
 static std::string yyfilename;
 
 bool TemplateParser::Parse(const char *filename) {
-	printf("Parsing %s\n", filename);
+	//~ printf("Parsing %s\n", filename);
 	FILE *f = fopen(filename, "r");
 	yyscan_t scanner;
 	
@@ -63,9 +63,9 @@ static void print_node(int indent, astnode *doc) {
 }
 
 void TemplateParser::ProcessDocument(astnode *doc) {
-	printf("\n\n");
-	print_node(0, doc);
-	printf("\n\n");
+	//~ printf("\n\n");
+	//~ print_node(0, doc);
+	//~ printf("\n\n");
 	
 	VisitDocument(doc);
 }
