@@ -43,13 +43,9 @@ void copy_test_to_slot(test_t *test) {
 
 void test_results(state_t *input, state_t *output) {
 	for(int i = 0; i < REG_COUNT; ++i) {
-		if(input->regs[i] != output->regs[i]) {
-			printf("X%u\t%lx\t%lx\n", i, input->regs[i], output->regs[i]);
-		}
+		printf("X%u\t%lx\t%lx\n", i, input->regs[i], output->regs[i]);
 	}
-	if(input->flags != output->flags) {
-		printf("FLAGS\t%lx\t%lx\n", input->flags, output->flags);
-	}
+	printf("FLAGS\t%lx\t%lx\n", input->flags, output->flags);
 }
 
 void run_test(test_t *test) {
@@ -112,4 +108,5 @@ int main() {
 	
 	printf("Tests finished.\n");
 	angel_reportexception(0x20026);
+	return 0;
 }
