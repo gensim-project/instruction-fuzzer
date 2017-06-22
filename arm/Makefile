@@ -10,7 +10,7 @@ arcsim-bin := $(gensim-root)/arcsim/bin/arcsim
 arcsim := $(arcsim-bin) -p $(model) -s armv5e -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
 
 
-test-count := 1
+test-count := 50
 
 formats := adc add and bfc bfi bic clz cmn cmp eor mla mls mov mrs msr mul mvn orr pkhtb pkhbt qadd qasx qdadd qdsub qsax qsub rbit rev16 revsh rev rsb rsc sadd sasx sbc sbfx sdiv sel shadd shasx shsax shsub smlad smlald smlal smlalxx smla smlawx smlsl smls smmla smmls smmul smuad smull smul smulw smusd ssat16 ssat ssax ssub sub sxtab16 sxtab sxtah sxtb16 sxtb sxth teq tst uadd8 uadd16 uasx ubfx udiv uhadd uhasx uhsax uhsub umaal umlal umull uqadd uqadd8 uqasx uqsax uqsub8 uqsub usub8 usub16 uxtab16 uxtab uxtah uxtb16 uxtb uxth 
 
