@@ -89,7 +89,7 @@ int main() {
 		printf("Could not open file\n");
 		return 1;
 	}
-	printf("Got fd %x\n", fd);
+	//printf("Got fd %x\n", fd);
 	
 	// load file under test
 	long size = angel_flen(fd);

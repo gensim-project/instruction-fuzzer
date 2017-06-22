@@ -16,13 +16,16 @@ enum NodeType {
 	Node_Template,
 	Node_TemplateChunkList,
 	Node_TemplateChunkText,
-	Node_TemplateChunkField,
+	Node_TemplateChunkExpr,
+	
+	Node_TemplateExprId,
+	Node_TemplateExprDot,
+	Node_TemplateExprPlus,
 	
 	Node_Field,
 	Node_FieldBodyList,
 	Node_FieldBodyItemText,
 	Node_FieldBodyItemGenerator
-	
 };
 
 class astnode {
