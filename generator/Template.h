@@ -31,6 +31,33 @@ private:
 	const FieldDescriptor &_descriptor;
 };
 
+class ThisTemplateChunk : public TemplateChunk
+{
+public:
+	ThisTemplateChunk() {}
+};
+
+class BinaryExpressionTemplateChunk : public TemplateChunk
+{
+public:
+	enum ExpressionKind
+	{
+		PLUS
+	};
+	
+	BinaryExpressionTemplateChunk(ExpressionKind kind, const TemplateChunk& lhs, const TemplateChunk& rhs) : _kind(kind), _lhs(lhs), _rhs(rhs) { }
+
+	ExpressionKind GetKind() const { return _kind; }
+	
+	const TemplateChunk& LHS() const { return _lhs; }
+	const TemplateChunk& RHS() const { return _rhs; }
+	
+private:
+	ExpressionKind _kind;
+	const TemplateChunk& _lhs;
+	const TemplateChunk& _rhs;
+};
+
 class Template
 {
 public:

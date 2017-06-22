@@ -22,7 +22,8 @@ private:
 	void VisitTemplateStatement(astnode *doc);
 	void VisitTemplateChunkList(astnode *doc, Template *parent);
 	void VisitTemplateChunkText(astnode *doc, Template *parent);
-	void VisitTemplateChunkField(astnode *doc, Template *parent);
+	void VisitTemplateChunkExpression(astnode *doc, Template *parent);
+	TemplateChunk *VisitTemplateExpression(astnode *doc);
 	
 	void VisitFieldStatement(astnode *doc);
 	void VisitFieldBodyList(astnode *doc, FieldDescriptor *field);

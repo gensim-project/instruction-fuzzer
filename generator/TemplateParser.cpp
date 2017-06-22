@@ -107,8 +107,8 @@ void TemplateParser::VisitTemplateChunkList(astnode *doc, Template *parent) {
 			case Node_TemplateChunkText:
 				VisitTemplateChunkText(i, parent);
 				break;
-			case Node_TemplateChunkField:
-				VisitTemplateChunkField(i, parent);
+			case Node_TemplateChunkExpr:
+				VisitTemplateChunkExpression(i, parent);
 				break;
 			default:
 				throw std::logic_error("");
@@ -120,12 +120,33 @@ void TemplateParser::VisitTemplateChunkText(astnode *doc, Template *parent) {
 	parent->AddChunk(new StringTemplateChunk(doc->Children().at(0)->String()));
 }
 
-void TemplateParser::VisitTemplateChunkField(astnode *doc, Template *parent) {
-	// look up the correct field descriptor
-	const FieldDescriptor &field = _fields.at(doc->Children().at(0)->String());
-	parent->AddChunk(new FieldTemplateChunk(field));
+void TemplateParser::VisitTemplateChunkExpression(astnode *doc, Template *parent) {
+	parent->AddChunk(VisitTemplateExpression(doc->Children().at(0)));
 }
 
+TemplateChunk *TemplateParser::VisitTemplateExpression(astnode* doc) {
+	switch (doc->Type()) {
+	case Node_TemplateExprId: {
+		const FieldDescriptor &field = _fields.at(doc->Children().at(0)->String());
+		return new FieldTemplateChunk(field);
+	}
+	
+	case Node_TemplateExprDot: {
+		return new ThisTemplateChunk();
+	}
+
+	case Node_TemplateExprPlus: {
+		return new BinaryExpressionTemplateChunk(
+			BinaryExpressionTemplateChunk::PLUS,
+			*VisitTemplateExpression(doc->Children().at(0)),
+			*VisitTemplateExpression(doc->Children().at(1))
+		);
+	}
+	
+	default:
+		throw std::logic_error("Unsupported field expression node");
+	}
+}
 
 void TemplateParser::VisitFieldStatement(astnode *doc) {
 	const char *fieldname = doc->Children().at(0)->String();

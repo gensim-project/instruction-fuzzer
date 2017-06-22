@@ -53,6 +53,8 @@ void ARMAssemblyTarget::PrintTemplate(const Template &t)
 			const auto &chunk = field_chunk->Get();
 			uint32_t index = rand() % chunk.CountValues();
 			print("%s", chunk.Get(index).c_str());
+		} else {
+			print("???");
 		}
 	}
 	print("\n");
