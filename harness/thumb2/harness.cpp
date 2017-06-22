@@ -9,6 +9,7 @@
 
 extern "C" void test_fn();
 extern "C" uint32_t test_slot;
+extern "C" uint16_t harness_nop1;
 
 struct register_state {
 	uint32_t gprs[13];
@@ -56,10 +57,8 @@ void HarnessInitialize()
 	unprotect_page(&output_state);
 }
 
-extern uint16_t harness_nop1;
-void HarnessRunTest(const Descriptor &test, Descriptor *&results)
+void HarnessPrepareTest(const Descriptor &test)
 {
-	random_engine_t random;
 	uint32_t test_instruction_ptr = ((uint32_t)&test_slot) & ~1;	
 	
 	test.CopyTo((uint8_t*)test_instruction_ptr);
@@ -70,6 +69,13 @@ void HarnessRunTest(const Descriptor &test, Descriptor *&results)
 	}
 	
 	__builtin___clear_cache((void*)test_instruction_ptr, (void*)(test_instruction_ptr + 4));
+		
+}
+
+extern uint16_t harness_nop1;
+void HarnessRunTest(const Descriptor &test, Descriptor *&results)
+{
+	random_engine_t random;
 	
 	RandomizeInputState();
 	

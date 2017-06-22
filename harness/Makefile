@@ -1,7 +1,7 @@
 CXXFLAGS=-std=c++11 -g -I$(PWD) -O2
 LDFLAGS=-static
 
-arches := arm arm-mem arm-vfp armv8-native #thumb2 thumb2-it thumb2-vfp thumb2-mem
+arches := arm thumb2 arm-mem arm-vfp armv8-native # thumb2-it thumb2-vfp thumb2-mem
 harnesses := $(arches:%=%/harness)
 
 arm-cxx := arm-unknown-linux-gnueabi-g++
