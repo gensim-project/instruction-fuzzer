@@ -1,13 +1,10 @@
-harness := ../harness/arm/harness
+harness := ../harness/armv8-native/harness
 generator := ../generator/generator
-as := aarch64-linux-gnu-as 
-objcopy := aarch64-linux-gnu-objcopy
+as := aarch64-unknown-linux-gnueabi-as 
+objcopy := aarch64-unknown-linux-gnueabi-objcopy
 
-gensim-root := /home/harry/Work/gensim
-qemu := qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
-model := $(gensim-root)/arm_v5_dynamic/output_blockjit/armv5e.dll
-arcsim-bin := $(gensim-root)/arcsim/bin/arcsim
-arcsim := $(arcsim-bin) -p $(model) -s armv5e -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
+qemu := /disk/scratch/tspink/src/qemu/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
+captive := /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspink/captive/arch/aarch64.arch --platform simbench --block-dev-file /tmp/zero --semihosting
 
 test-count := 1
 
@@ -18,11 +15,9 @@ listings := $(formats:%=%.S)
 objects  := $(formats:%=%.o)
 
 results-qemu := $(formats:%=results/%.qemu)
-results-arcsim := $(formats:%=results/%.arcsim)
+results-captive := $(formats:%=results/%.captive)
 
-qemu-results : $(results-qemu)
-
-results := $(results-qemu) $(results-arcsim)
+results := $(results-qemu) $(results-captive)
 result-checks := $(formats:%=result-%)
 
 .PHONY : result-checks all $(result-checks)
@@ -36,13 +31,13 @@ clean :
 	rm -f $(binaries) $(listings) $(objects) $(results)
 	rm -fr results
 
-results/%.qemu : %.bin $(harness)
+results/%.qemu : %.bin
 	mkdir -p results
-	-$(qemu) -kernel ../harness/armv8-native/harness -append $*.bin 2> $@
+	-$(qemu) -kernel $(harness) -append $*.bin
 
-results/%.arcsim : %.bin $(arcsim-bin) $(model)
+results/%.captive : %.bin
 	mkdir -p results
-	-$(arcsim) -e $(harness) -- $*.bin $(test-count) > $@
+	-$(captive) --kernel $(harness) --command-line $*.bin
 
 %.S : %.templates $(generator)
 	$(generator) armv8 $^ > $@
