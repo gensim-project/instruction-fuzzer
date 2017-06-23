@@ -127,6 +127,9 @@ void TemplateParser::VisitTemplateChunkExpression(astnode *doc, Template *parent
 TemplateChunk *TemplateParser::VisitTemplateExpression(astnode* doc) {
 	switch (doc->Type()) {
 	case Node_TemplateExprId: {
+		if (!_fields.count(doc->Children().at(0)->String())) {
+			throw std::logic_error("Field '" + std::string(doc->Children().at(0)->String()) + "' does not exist");
+		}
 		const FieldDescriptor &field = _fields.at(doc->Children().at(0)->String());
 		return new FieldTemplateChunk(field);
 	}
