@@ -8,7 +8,8 @@ captive := /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspin
 
 test-count := 1
 
-formats := adc add and asr sbfm adr
+formats := adc add and asr bfi bfm bfxil bic ccmn ccmp cinc cinv cls clz cmn cmp cneg csel cset csetm csinc csinv
+formats += csneg eon eor extr
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)
@@ -40,13 +41,13 @@ results/%.captive : %.bin
 	-$(captive) --kernel $(harness) --command-line $*.bin > $@
 
 %.S : %.templates $(generator)
-	$(generator) armv8 $^ > $@
+	$(generator) armv8 $< > $@
 
 %.o : %.S
 	$(as) $^ -o $@
 
 %.bin : %.o
-	$(objcopy) -O binary $^ $@
+	$(objcopy) -O binary $< $@
 
 $(generator) : 
 	make -C ../generator

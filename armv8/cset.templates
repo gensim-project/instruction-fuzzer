@@ -1,0 +1,4 @@
+include fields.inc
+
+template cset [wreg_zr], [cond]
+template cset [xreg_zr], [cond]

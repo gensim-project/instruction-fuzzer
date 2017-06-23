@@ -1,0 +1,8 @@
+include fields.inc
+
+template eon [wreg_zr], [wreg_zr], [wreg_zr]
+template eon [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+
+template eon [xreg_zr], [xreg_zr], [xreg_zr]
+template eon [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
+

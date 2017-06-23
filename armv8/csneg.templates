@@ -1,0 +1,4 @@
+include fields.inc
+
+template csneg [wreg_zr], [wreg_zr], [wreg_zr], [cond]
+template csneg [xreg_zr], [xreg_zr], [xreg_zr], [cond]

@@ -1,0 +1,7 @@
+include fields.inc
+
+template ccmp [wreg_zr], #[imm], #[nzcv], [cond]
+template ccmp [xreg_zr], #[imm], #[nzcv], [cond]
+
+template ccmp [wreg_zr], [wreg_zr], #[nzcv], [cond]
+template ccmp [xreg_zr], [xreg_zr], #[nzcv], [cond]

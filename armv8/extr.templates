@@ -1,0 +1,4 @@
+include fields.inc
+
+template extr [wreg_zr], [wreg_zr], [wreg_zr], #[imm]
+template extr [xreg_zr], [xreg_zr], [xreg_zr], #[imm]

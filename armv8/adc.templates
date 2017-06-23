@@ -1,7 +1,8 @@
 include fields.inc
 
-template adc [xreg], [xreg], [xreg]
-template adc [wreg], [wreg], [wreg]
+template adc [wreg_zr], [wreg_zr], [wreg_zr]
+template adc [xreg_zr], [xreg_zr], [xreg_zr]
 
-template adcs [xreg], [xreg], [xreg]
-template adcs [wreg], [wreg], [wreg]
+template adcs [wreg_zr], [wreg_zr], [wreg_zr]
+template adcs [xreg_zr], [xreg_zr], [xreg_zr]
+

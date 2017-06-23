@@ -1,0 +1,4 @@
+include fields.inc
+
+template cls [wreg_zr], [wreg_zr]
+template cls [xreg_zr], [xreg_zr]

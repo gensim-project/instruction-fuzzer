@@ -1,0 +1,4 @@
+include fields.inc
+
+template adr [xreg_zr], [. + medium_imm]
+template adrp [xreg_zr], [. + medium_imm]

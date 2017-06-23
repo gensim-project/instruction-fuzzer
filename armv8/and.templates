@@ -1,13 +1,17 @@
 include fields.inc
 
-template and [wreg], [wreg], #[bitmask_imm_w]
-template and [xreg], [xreg], #[bitmask_imm_x]
+template and [wreg], [wreg_zr], #[bitmask_imm_w]
+template and [xreg], [xreg_zr], #[bitmask_imm_x]
 
-template and [wreg], [wreg], [wreg], [shift_type] [shift_amt_w]
-template and [xreg], [xreg], [xreg], [shift_type] [shift_amt_x]
+template and [wreg_zr], [wreg_zr], [wreg_zr]
+template and [xreg_zr], [xreg_zr], [xreg_zr]
+template and [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template and [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
 
-template ands [wreg], [wreg], #[bitmask_imm_w]
-template ands [xreg], [xreg], #[bitmask_imm_x]
+template ands [wreg], [wreg_zr], #[bitmask_imm_w]
+template ands [xreg], [xreg_zr], #[bitmask_imm_x]
 
-template ands [wreg], [wreg], [wreg], [shift_type] [shift_amt_w]
-template ands [xreg], [xreg], [xreg], [shift_type] [shift_amt_x]
+template ands [wreg_zr], [wreg_zr], [wreg_zr]
+template ands [xreg_zr], [xreg_zr], [xreg_zr]
+template ands [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template ands [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]

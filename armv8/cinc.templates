@@ -1,0 +1,4 @@
+include fields.inc
+
+template cinc [wreg_zr], [wreg_zr], [cond]
+template cinc [xreg_zr], [xreg_zr], [cond]

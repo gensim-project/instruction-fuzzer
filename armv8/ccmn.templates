@@ -1,0 +1,7 @@
+include fields.inc
+
+template ccmn [wreg_zr], #[imm], #[nzcv], [cond]
+template ccmn [xreg_zr], #[imm], #[nzcv], [cond]
+
+template ccmn [wreg_zr], [wreg_zr], #[nzcv], [cond]
+template ccmn [xreg_zr], [xreg_zr], #[nzcv], [cond]

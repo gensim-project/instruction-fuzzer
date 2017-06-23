@@ -1,0 +1,13 @@
+include fields.inc
+
+template bic [wreg_zr], [wreg_zr], [wreg_zr]
+template bic [xreg_zr], [xreg_zr], [xreg_zr]
+
+template bic [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template bic [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
+
+template bics [wreg_zr], [wreg_zr], [wreg_zr]
+template bics [xreg_zr], [xreg_zr], [xreg_zr]
+
+template bics [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template bics [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
