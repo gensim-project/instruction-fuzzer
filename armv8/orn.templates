@@ -1,0 +1,8 @@
+include fields.inc
+
+template orn [wreg_zr], [wreg_zr], [wreg_zr]
+template orn [wreg_zr], [wreg_zr], [wreg_zr], [shift_type_ror] #[shift_amt_w]
+
+template orn [xreg_zr], [xreg_zr], [xreg_zr]
+template orn [xreg_zr], [xreg_zr], [xreg_zr], [shift_type_ror] #[shift_amt_x]
+

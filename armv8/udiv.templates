@@ -1,0 +1,4 @@
+include fields.inc
+
+template udiv [wreg_zr], [wreg_zr], [wreg_zr]
+template udiv [xreg_zr], [xreg_zr], [xreg_zr]

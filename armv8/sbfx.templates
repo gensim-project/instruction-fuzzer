@@ -1,0 +1,4 @@
+include fields.inc
+
+template sbfx [wreg_zr], [wreg_zr], #[nz_shift_amt_w], #[nz_shift_amt_w]
+template sbfx [xreg_zr], [xreg_zr], #[nz_shift_amt_x], #[nz_shift_amt_x]

@@ -1,0 +1,28 @@
+include fields.inc
+
+template mov [wreg], [wreg_sp]
+template mov [xreg], [xreg_sp]
+
+template mov [wreg_zr], [wreg_zr]
+template mov [xreg_zr], [xreg_zr]
+
+template movk [wreg_zr], #[imm]
+template movk [wreg_zr], #[imm], lsl #16
+template movk [xreg_zr], #[imm]
+template movk [xreg_zr], #[imm], lsl #16
+template movk [xreg_zr], #[imm], lsl #32
+template movk [xreg_zr], #[imm], lsl #48
+
+template movn [wreg_zr], #[imm]
+template movn [wreg_zr], #[imm], lsl #16
+template movn [xreg_zr], #[imm]
+template movn [xreg_zr], #[imm], lsl #16
+template movn [xreg_zr], #[imm], lsl #32
+template movn [xreg_zr], #[imm], lsl #48
+
+template movz [wreg_zr], #[imm]
+template movz [wreg_zr], #[imm], lsl #16
+template movz [xreg_zr], #[imm]
+template movz [xreg_zr], #[imm], lsl #16
+template movz [xreg_zr], #[imm], lsl #32
+template movz [xreg_zr], #[imm], lsl #48

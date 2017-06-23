@@ -1,0 +1,6 @@
+include fields.inc
+
+template sbc [wreg_zr], [wreg_zr], [wreg_zr]
+template sbc [xreg_zr], [xreg_zr], [xreg_zr]
+template sbcs [wreg_zr], [wreg_zr], [wreg_zr]
+template sbcs [xreg_zr], [xreg_zr], [xreg_zr]

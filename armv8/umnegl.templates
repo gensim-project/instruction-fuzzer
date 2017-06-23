@@ -1,0 +1,4 @@
+include fields.inc
+
+template umnegl [xreg_zr], [wreg_zr], [wreg_zr]
+

@@ -1,0 +1,7 @@
+include fields.inc
+
+template ngc [wreg_zr], [wreg_zr]
+template ngc [xreg_zr], [xreg_zr]
+
+template ngcs [wreg_zr], [wreg_zr]
+template ngcs [xreg_zr], [xreg_zr]

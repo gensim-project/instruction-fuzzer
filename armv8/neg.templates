@@ -1,0 +1,14 @@
+include fields.inc
+
+template neg [wreg_zr], [wreg_zr]
+template neg [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+
+template neg [xreg_zr], [xreg_zr]
+template neg [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
+
+template negs [wreg_zr], [wreg_zr]
+template negs [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+
+template negs [xreg_zr], [xreg_zr]
+template negs [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
+

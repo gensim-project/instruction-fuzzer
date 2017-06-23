@@ -1,0 +1,4 @@
+include fields.inc
+
+template sdiv [wreg_zr], [wreg_zr], [wreg_zr]
+template sdiv [xreg_zr], [xreg_zr], [xreg_zr]

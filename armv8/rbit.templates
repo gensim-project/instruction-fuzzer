@@ -1,0 +1,4 @@
+include fields.inc
+
+template rbit [wreg_zr], [wreg_zr]
+template rbit [xreg_zr], [xreg_zr]

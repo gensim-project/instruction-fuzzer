@@ -1,0 +1,4 @@
+include fields.inc
+
+template madd [wreg_zr], [wreg_zr], [wreg_zr], [wreg_zr]
+template madd [xreg_zr], [xreg_zr], [xreg_zr], [xreg_zr]
