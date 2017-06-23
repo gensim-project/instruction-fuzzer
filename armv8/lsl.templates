@@ -1,0 +1,7 @@
+include fields.inc
+
+template lsl [wreg_zr], [wreg_zr], [wreg_zr]
+template lsl [xreg_zr], [xreg_zr], [xreg_zr]
+
+template lsl [wreg_zr], [wreg_zr], #[shift_amt_w]
+template lsl [xreg_zr], [xreg_zr], #[shift_amt_x]

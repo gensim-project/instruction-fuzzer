@@ -1,0 +1,31 @@
+include fields.inc
+
+template sub [wreg], [wreg_sp], [wreg_zr]
+template sub [wreg], [wreg_sp], [wreg_zr], [extend_type] #[extend_amt_w]
+template sub [xreg], [xreg_sp], [xreg_zr]
+template sub [xreg], [xreg_sp], [xreg_zr], [extend_type] #[extend_amt_x]
+
+template sub [wreg], [wreg_sp], #[imm]
+template sub [wreg], [wreg_sp], #[imm], lsl #12
+template sub [xreg], [xreg_sp], #[imm]
+template sub [xreg], [xreg_sp], #[imm], lsl #12
+
+template sub [wreg_zr], [wreg_zr], [wreg_zr]
+template sub [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template sub [xreg_zr], [xreg_zr], [xreg_zr]
+template sub [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
+
+template subs [wreg], [wreg_sp], [wreg_zr]
+template subs [wreg], [wreg_sp], [wreg_zr], [extend_type] #[extend_amt_w]
+template subs [xreg], [xreg_sp], [xreg_zr]
+template subs [xreg], [xreg_sp], [xreg_zr], [extend_type] #[extend_amt_x]
+
+template subs [wreg], [wreg_sp], #[imm]
+template subs [wreg], [wreg_sp], #[imm], lsl #12
+template subs [xreg], [xreg_sp], #[imm]
+template subs [xreg], [xreg_sp], #[imm], lsl #12
+
+template subs [wreg_zr], [wreg_zr], [wreg_zr]
+template subs [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template subs [xreg_zr], [xreg_zr], [xreg_zr]
+template subs [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]

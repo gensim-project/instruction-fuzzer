@@ -1,0 +1,7 @@
+include fields.inc
+
+template rev [wreg_zr], [wreg_zr]
+template rev [xreg_zr], [xreg_zr]
+template rev16 [wreg_zr], [wreg_zr]
+template rev16 [xreg_zr], [xreg_zr]
+template rev32 [xreg_zr], [xreg_zr]

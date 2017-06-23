@@ -1,0 +1,4 @@
+include fields.inc
+
+template msub [wreg_zr], [wreg_zr], [wreg_zr], [wreg_zr]
+template msub [xreg_zr], [xreg_zr], [xreg_zr], [xreg_zr]

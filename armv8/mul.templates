@@ -1,0 +1,4 @@
+include fields.inc
+
+template mul [wreg_zr], [wreg_zr], [wreg_zr]
+template mul [xreg_zr], [xreg_zr], [xreg_zr]

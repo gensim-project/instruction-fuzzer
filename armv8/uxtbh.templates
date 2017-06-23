@@ -1,0 +1,4 @@
+include fields.inc
+
+template uxtb [wreg_zr], [wreg_zr]
+template uxth [wreg_zr], [wreg_zr]

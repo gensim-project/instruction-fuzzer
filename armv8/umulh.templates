@@ -1,0 +1,4 @@
+include fields.inc
+
+template umulh [xreg_zr], [xreg_zr], [xreg_zr]
+

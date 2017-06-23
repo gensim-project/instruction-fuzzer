@@ -1,0 +1,7 @@
+include fields.inc
+
+template sxtb [wreg_zr], [wreg_zr]
+template sxtb [xreg_zr], [wreg_zr]
+template sxth [wreg_zr], [wreg_zr]
+template sxth [xreg_zr], [wreg_zr]
+template sxtw [xreg_zr], [wreg_zr]

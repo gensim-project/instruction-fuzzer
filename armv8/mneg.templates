@@ -1,0 +1,4 @@
+include fields.inc
+
+template mneg [wreg_zr], [wreg_zr], [wreg_zr]
+template mneg [xreg_zr], [xreg_zr], [xreg_zr]

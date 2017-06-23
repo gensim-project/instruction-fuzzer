@@ -1,0 +1,4 @@
+include fields.inc
+
+template ubfiz [wreg_zr], [wreg_zr], #[nz_shift_amt_w], #[nz_shift_amt_w]
+template ubfiz [xreg_zr], [xreg_zr], #[nz_shift_amt_w], #[nz_shift_amt_w]

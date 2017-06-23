@@ -1,5 +1,5 @@
 include fields.inc
 
-template bfxil [wreg_zr], [wreg_zr], #[bfm_imm], #[bfm_imm]
-template bfxil [xreg_zr], [xreg_zr], #[bfm_imm], #[bfm_imm]
+template bfxil [wreg_zr], [wreg_zr], #[nz_imm], #[nz_imm]
+template bfxil [xreg_zr], [xreg_zr], #[nz_imm], #[nz_imm]
 

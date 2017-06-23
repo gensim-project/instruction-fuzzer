@@ -1,0 +1,4 @@
+include fields.inc
+
+template ubfm [wreg_zr], [wreg_zr], #[shift_amt_w], #[shift_amt_w]
+template ubfm [xreg_zr], [xreg_zr], #[shift_amt_w], #[shift_amt_w]

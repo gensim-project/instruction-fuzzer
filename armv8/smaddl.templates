@@ -1,0 +1,3 @@
+include fields.inc
+
+template smaddl [xreg_zr], [wreg_zr], [wreg_zr], [xreg_zr]
