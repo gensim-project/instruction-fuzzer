@@ -1,0 +1,9 @@
+include fields.inc
+
+template eor [wreg], [wreg_zr], #[bitmask_imm_w]
+template eor [xreg], [xreg_zr], #[bitmask_imm_x]
+
+template eor [wreg_zr], [wreg_zr], [wreg_zr]
+template eor [wreg_zr], [wreg_zr], [wreg_zr], [shift_type_ror] #[shift_amt_w]
+template eor [xreg_zr], [xreg_zr], [xreg_zr]
+template eor [xreg_zr], [xreg_zr], [xreg_zr], [shift_type_ror] #[shift_amt_x]

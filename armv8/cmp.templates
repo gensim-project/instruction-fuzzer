@@ -1,0 +1,17 @@
+include fields.inc
+
+template cmp [wreg], [wreg_zr]
+template cmp [wreg], [wreg_zr], [extend_type] #[extend_amt_w]
+
+template cmp [xreg], [xreg_zr]
+template cmp [xreg], [xreg_zr], [extend_type] #[extend_amt_x]
+
+template cmp [wreg], #[imm]
+template cmp [wreg], #[imm], lsl #12
+template cmp [xreg], #[imm]
+template cmp [xreg], #[imm], lsl #12
+
+template cmp [wreg_zr], [wreg_zr]
+template cmp [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template cmp [xreg_zr], [xreg_zr]
+template cmp [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]

@@ -1,0 +1,4 @@
+include fields.inc
+
+template cinv [wreg], [wreg], [cond]
+template cinv [xreg], [xreg], [cond]

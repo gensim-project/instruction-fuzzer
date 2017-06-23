@@ -1,31 +1,31 @@
 include fields.inc
 
-template add [xreg], [xreg], [xreg]
-template add [wreg], [wreg], [wreg]
+template add [wreg], [wreg_sp], [wreg_zr]
+template add [wreg], [wreg_sp], [wreg_zr], [extend_type] #[extend_amt_w]
+template add [xreg], [xreg_sp], [xreg_zr]
+template add [xreg], [xreg_sp], [xreg_zr], [extend_type] #[extend_amt_x]
 
-template add [xreg], sp, [xreg]
-template add [wreg], wsp, [wreg]
+template add [wreg], [wreg_sp], #[imm]
+template add [wreg], [wreg_sp], #[imm], lsl #12
+template add [xreg], [xreg_sp], #[imm]
+template add [xreg], [xreg_sp], #[imm], lsl #12
 
-template add [xreg], [xreg], [imm]
-template add [wreg], [wreg], [imm]
+template add [wreg_zr], [wreg_zr], [wreg_zr]
+template add [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template add [xreg_zr], [xreg_zr], [xreg_zr]
+template add [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
 
-template add [xreg], [xreg], [imm], lsl #12
-template add [wreg], [wreg], [imm], lsl #12
+template adds [wreg], [wreg_sp], [wreg_zr]
+template adds [wreg], [wreg_sp], [wreg_zr], [extend_type] #[extend_amt_w]
+template adds [xreg], [xreg_sp], [xreg_zr]
+template adds [xreg], [xreg_sp], [xreg_zr], [extend_type] #[extend_amt_x]
 
-template add [xreg], [xreg], [xreg], [shift_type] [shift_amt_x]
-template add [wreg], [wreg], [wreg], [shift_type] [shift_amt_w]
+template adds [wreg], [wreg_sp], #[imm]
+template adds [wreg], [wreg_sp], #[imm], lsl #12
+template adds [xreg], [xreg_sp], #[imm]
+template adds [xreg], [xreg_sp], #[imm], lsl #12
 
-template adds [xreg], [xreg], [xreg]
-template adds [wreg], [wreg], [wreg]
-
-template adds [xreg], sp, [xreg]
-template adds [wreg], wsp, [wreg]
-
-template adds [xreg], [xreg], [imm]
-template adds [wreg], [wreg], [imm]
-
-template adds [xreg], [xreg], [imm], lsl #12
-template adds [wreg], [wreg], [imm], lsl #12
-
-template adds [xreg], [xreg], [xreg], [shift_type] [shift_amt_x]
-template adds [wreg], [wreg], [wreg], [shift_type] [shift_amt_w]
+template adds [wreg_zr], [wreg_zr], [wreg_zr]
+template adds [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
+template adds [xreg_zr], [xreg_zr], [xreg_zr]
+template adds [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]

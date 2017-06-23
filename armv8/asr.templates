@@ -1,7 +1,7 @@
 include fields.inc
 
-template asr [xreg], [xreg], [xreg]
-template asr [wreg], [wreg], [wreg]
+template asr [wreg_zr], [wreg_zr], [wreg_zr]
+template asr [xreg_zr], [xreg_zr], [xreg_zr]
 
-template asr [xreg], [xreg], [shift_amt_x]
-template asr [wreg], [wreg], [shift_amt_w]
+template asr [wreg_zr], [wreg_zr], #[shift_amt_w]
+template asr [xreg_zr], [xreg_zr], #[shift_amt_x]

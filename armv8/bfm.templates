@@ -1,0 +1,5 @@
+include fields.inc
+
+template bfm [wreg_zr], [wreg_zr], #[bfm_ror_amt_w], #[bfm_shift_amt_w]
+template bfm [xreg_zr], [xreg_zr], #[bfm_ror_amt_x], #[bfm_shift_amt_x]
+

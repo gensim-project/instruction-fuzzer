@@ -1,0 +1,4 @@
+include fields.inc
+
+template bfi [wreg_zr], [wreg_zr], #[bfm_imm], #[bfm_imm]
+template bfi [xreg_zr], [xreg_zr], #[bfm_imm], #[bfm_imm]
