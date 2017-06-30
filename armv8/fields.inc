@@ -10,6 +10,7 @@ field wreg_zr w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 
 field vreg v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19 v20 v21 v22 v23 v24 v25 v26 v27 v28 v29 v30 v31
 field arrgw 8B 16B 4H 8H 2S 4S
 field arrgx 2D
+field arrg 8B 16B 4H 8H 2S 4S 2D
 
 field imm 0 1 2 3 4 5
 field nz_imm 1 2 3 4

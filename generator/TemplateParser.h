@@ -23,7 +23,7 @@ private:
 	void VisitTemplateChunkList(astnode *doc, Template *parent);
 	void VisitTemplateChunkText(astnode *doc, Template *parent);
 	void VisitTemplateChunkExpression(astnode *doc, Template *parent);
-	TemplateChunk *VisitTemplateExpression(astnode *doc);
+	TemplateChunk *VisitTemplateExpression(astnode *doc, Template *parent);
 	
 	void VisitFieldStatement(astnode *doc);
 	void VisitFieldBodyList(astnode *doc, FieldDescriptor *field);
