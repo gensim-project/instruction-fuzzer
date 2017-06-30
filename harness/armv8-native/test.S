@@ -12,6 +12,26 @@ execute_test:
 	
 	stp x0, x1, [sp, #-16]! // 112 &input &output
 	// load input state
+
+	// V-REGS
+	ldp q0, q1, [x0, 256 + (32 * 0)]
+	ldp q2, q3, [x0, 256 + (32 * 1)]
+	ldp q4, q5, [x0, 256 + (32 * 2)]
+	ldp q6, q7, [x0, 256 + (32 * 3)]
+	ldp q8, q9, [x0, 256 + (32 * 4)]
+	ldp q10, q11, [x0, 256 + (32 * 5)]
+	ldp q12, q13, [x0, 256 + (32 * 6)]
+	ldp q14, q15, [x0, 256 + (32 * 7)]
+	ldp q16, q17, [x0, 256 + (32 * 8)]
+	ldp q18, q19, [x0, 256 + (32 * 9)]
+	ldp q20, q21, [x0, 256 + (32 * 10)]
+	ldp q22, q23, [x0, 256 + (32 * 11)]
+	ldp q24, q25, [x0, 256 + (32 * 12)]
+	ldp q26, q27, [x0, 256 + (32 * 13)]
+	ldp q28, q29, [x0, 256 + (32 * 14)]
+	ldp q30, q31, [x0, 256 + (32 * 15)]
+
+	// G-REGS
 	ldp x2, x3, [x0, 16 * 1]
 	ldp x4, x5, [x0, 16 * 2]
 	ldp x6, x7, [x0, 16 * 3]
@@ -28,7 +48,8 @@ execute_test:
 	ldp x28, x29, [x0, 16 * 14]
 	ldr x30, [x0, 16 * 15]
 	
-	ldr x1, [x0, 8 * 31]
+	// FLAGS
+	ldr x1, [x0, 768]
 	msr nzcv, x1
 	
 	ldp x0, x1, [x0]
@@ -41,6 +62,7 @@ test_slot:
 	// save state to output
 	stp x0, x1, [sp, #-16]! // 128 out_x0 out_x1
 	
+	// G-REGS
 	ldr x0, [sp, #24]
 	stp x2, x3, [x0, 16 * 1]
 	stp x4, x5, [x0, 16 * 2]
@@ -57,13 +79,32 @@ test_slot:
 	stp x26, x27, [x0, 16 * 13]
 	stp x28, x29, [x0, 16 * 14]
 	str x30,     [x0, 16 * 15]
+
+	// V-REGS
+	stp q0, q1, [x0, 256 + (32 * 0)]
+	stp q2, q3, [x0, 256 + (32 * 1)]
+	stp q4, q5, [x0, 256 + (32 * 2)]
+	stp q6, q7, [x0, 256 + (32 * 3)]
+	stp q8, q9, [x0, 256 + (32 * 4)]
+	stp q10, q11, [x0, 256 + (32 * 5)]
+	stp q12, q13, [x0, 256 + (32 * 6)]
+	stp q14, q15, [x0, 256 + (32 * 7)]
+	stp q16, q17, [x0, 256 + (32 * 8)]
+	stp q18, q19, [x0, 256 + (32 * 9)]
+	stp q20, q21, [x0, 256 + (32 * 10)]
+	stp q22, q23, [x0, 256 + (32 * 11)]
+	stp q24, q25, [x0, 256 + (32 * 12)]
+	stp q26, q27, [x0, 256 + (32 * 13)]
+	stp q28, q29, [x0, 256 + (32 * 14)]
+	stp q30, q31, [x0, 256 + (32 * 15)]
 	
 	mov x2, x0
 	ldp x0, x1, [sp], #16 // 112 out_x0 out_x1
 	stp x0, x1, [x2]
 	
+	// FLAGS
 	mrs x0, nzcv
-	str x0, [x2, 8*31]
+	str x0, [x2, 768]
 	
 	add sp, sp, #16
 	

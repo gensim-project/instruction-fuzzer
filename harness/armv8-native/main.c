@@ -4,6 +4,8 @@
 #include "test.h"
 #include "printf/printf.h"
 
+#define ARRAY_SIZE(__arr) (sizeof(__arr) / sizeof(__arr[0]))
+
 #include <stdint-gcc.h>
 
 #define ITERATIONS 10
@@ -26,9 +28,15 @@ uint64_t random() {
 }
 
 void generate_state(state_t *state) {
-	for(int i = 0; i < REG_COUNT; ++i) {
-		state->regs[i] = random();
+	for(int i = 0; i < ARRAY_SIZE(state->gregs); ++i) {
+		state->gregs[i] = random();
 	}
+	
+	for(int i = 0; i < ARRAY_SIZE(state->vregs); ++i) {
+		state->vregs[i].lo = random();
+		state->vregs[i].hi = random();
+	}
+	
 	state->flags = random() & 0xf0000000;
 }
 
@@ -42,8 +50,11 @@ void copy_test_to_slot(test_t *test) {
 }
 
 void test_results(state_t *input, state_t *output) {
-	for(int i = 0; i < REG_COUNT; ++i) {
-		printf("X%u\t%lx\t%lx\n", i, input->regs[i], output->regs[i]);
+	for(int i = 0; i < ARRAY_SIZE(input->gregs); ++i) {
+		printf("X%u\t%lx\t%lx\n", i, input->gregs[i], output->gregs[i]);
+	}
+	for(int i = 0; i < ARRAY_SIZE(input->vregs); ++i) {
+		printf("V%u\t%lx:%lx\t%lx:%lx\n", i, input->vregs[i].hi, input->vregs[i].lo, output->vregs[i].hi, output->vregs[i].lo);
 	}
 	printf("FLAGS\t%lx\t%lx\n", input->flags, output->flags);
 }
