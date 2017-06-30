@@ -21,6 +21,7 @@ enum NodeType {
 	Node_TemplateExprId,
 	Node_TemplateExprDot,
 	Node_TemplateExprPlus,
+	Node_TemplateExprPercent,
 	
 	Node_Field,
 	Node_FieldBodyList,

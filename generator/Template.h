@@ -37,6 +37,17 @@ public:
 	ThisTemplateChunk() {}
 };
 
+class BackRefTemplateChunk : public TemplateChunk
+{
+public:
+	BackRefTemplateChunk(const TemplateChunk& ref) : _ref(ref) {}
+	
+	const TemplateChunk& Ref() const { return _ref; }
+	
+private:
+	const TemplateChunk& _ref;
+};
+
 class BinaryExpressionTemplateChunk : public TemplateChunk
 {
 public:
@@ -68,7 +79,7 @@ public:
 	container_t::const_iterator end() const { return _chunks.end(); }
 	
 	void AddChunk(TemplateChunk *chunk) { _chunks.push_back(chunk); }
-	
+	TemplateChunk *GetChunkByIndex(int index) const { return _chunks.at(index); }
 private:
 	container_t _chunks;
 };

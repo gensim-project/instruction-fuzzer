@@ -25,11 +25,11 @@ void yyerror(void *yyscanner, TemplateParser * parser, const char *s);
     astnode *ast_node;
 }
 
-%token <sval> FILENAME TEXT FIELDID FIELDTEXT TEMPLATEID TEMPLATETEXT TEMPLATE_EXPR_ID TEMPLATE_EXPR_PLUS TEMPLATE_EXPR_DOT
+%token <sval> FILENAME TEXT FIELDID FIELDTEXT TEMPLATEID TEMPLATETEXT TEMPLATE_EXPR_ID TEMPLATE_EXPR_NUM TEMPLATE_EXPR_PLUS TEMPLATE_EXPR_DOT TEMPLATE_EXPR_PERCENT
 %token <ival> 
 %token ENDOFFILE INCLUDE TEMPLATE FIELD SEMICOLON OBRACKET CBRACKET OBRACE CBRACE NEWLINE
 
-%type <ast_node> fuzzer_document statement_list include_statement template_statement template_chunk_list template_chunk text_template_chunk field_template_chunk template_expr field_statement field_body_list field_body_item field_body_item_text field_body_item_generator generator_body
+%type <ast_node> fuzzer_document statement_list include_statement template_statement template_chunk_list template_chunk text_template_chunk field_template_chunk template_expr field_statement field_body_list field_body_item field_body_item_text field_body_item_generator
 
 
 %%
@@ -40,18 +40,16 @@ statement_list :
 	statement_list include_statement NEWLINE | 
 	statement_list template_statement NEWLINE {$$ = $1; $$->AddChild($2); } | 
 	statement_list field_statement NEWLINE {$$ = $1; $$->AddChild($2); } | 
-	statement_list NEWLINE { $$ = $1; } | 
-	{$$ = CreateNode(Node_Document); }
+	statement_list NEWLINE { $$ = $1; } |
+	%empty {$$ = CreateNode(Node_Document); }
 
 include_statement : INCLUDE FILENAME { parse_file(parser, $2); }
 
-
-
 template_statement : TEMPLATE template_chunk_list { $$ = CreateNode(Node_Template); $$->AddChild($2); }
 
-template_chunk_list : template_chunk_list template_chunk { $$ = $1; $$->AddChild($2); } | {$$ = CreateNode(Node_TemplateChunkList); }
+template_chunk_list : template_chunk_list template_chunk { $$ = $1; $$->AddChild($2); } | %empty {$$ = CreateNode(Node_TemplateChunkList); }
 
-template_chunk : text_template_chunk {$$ = $1;}| field_template_chunk {$$ = $1;};
+template_chunk : text_template_chunk {$$ = $1;} | field_template_chunk {$$ = $1;};
 
 text_template_chunk : TEMPLATETEXT { $$ = CreateNode(Node_TemplateChunkText); $$->AddChild(CreateNodeStr($1)); }
 
@@ -59,19 +57,18 @@ field_template_chunk : OBRACKET template_expr CBRACKET { $$ = CreateNode(Node_Te
 
 template_expr	: TEMPLATE_EXPR_ID	{ $$ = CreateNode(Node_TemplateExprId); $$->AddChild(CreateNodeStr($1)); }
 				| TEMPLATE_EXPR_DOT	{ $$ = CreateNode(Node_TemplateExprDot); }
+				| TEMPLATE_EXPR_PERCENT TEMPLATE_EXPR_NUM { $$ = CreateNode(Node_TemplateExprPercent); $$->AddChild(CreateNodeStr($2)); }
 				| template_expr TEMPLATE_EXPR_PLUS template_expr { $$ = CreateNode(Node_TemplateExprPlus); $$->AddChild($1); $$->AddChild($3); }
 
 field_statement : FIELD FIELDID field_body_list { $$ = CreateNode(Node_Field); $$->AddChild(CreateNodeStr($2)); $$->AddChild($3); }
 
-field_body_list : field_body_list field_body_item { $$ = $1; $$->AddChild($2); } | {$$ = CreateNode(Node_FieldBodyList); }
+field_body_list : field_body_list field_body_item { $$ = $1; $$->AddChild($2); } | %empty {$$ = CreateNode(Node_FieldBodyList); }
 
 field_body_item : field_body_item_text { $$ = $1; } | field_body_item_generator { $$ = $1; };
 
 field_body_item_text : FIELDTEXT { $$ = CreateNode(Node_FieldBodyItemText); $$->AddChild(CreateNodeStr($1)); }
 
-field_body_item_generator : OBRACE generator_body CBRACE { $$ = CreateNode(Node_FieldBodyItemGenerator); $$->AddChild($2); }
-
-generator_body : ;
+field_body_item_generator : OBRACE CBRACE { $$ = CreateNode(Node_FieldBodyItemGenerator); }
 
 %%
 #include "fuzzer-syntax.tabs.h"

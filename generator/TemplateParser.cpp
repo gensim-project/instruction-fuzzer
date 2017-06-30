@@ -80,7 +80,7 @@ void TemplateParser::VisitDocument(astnode *doc) {
 				VisitFieldStatement(i);
 				break;
 			default:
-				throw std::logic_error("");
+				throw std::logic_error("Unknown type: " + std::to_string(i->Type()));
 		}
 	}
 }
@@ -121,10 +121,10 @@ void TemplateParser::VisitTemplateChunkText(astnode *doc, Template *parent) {
 }
 
 void TemplateParser::VisitTemplateChunkExpression(astnode *doc, Template *parent) {
-	parent->AddChunk(VisitTemplateExpression(doc->Children().at(0)));
+	parent->AddChunk(VisitTemplateExpression(doc->Children().at(0), parent));
 }
 
-TemplateChunk *TemplateParser::VisitTemplateExpression(astnode* doc) {
+TemplateChunk *TemplateParser::VisitTemplateExpression(astnode* doc, Template *parent) {
 	switch (doc->Type()) {
 	case Node_TemplateExprId: {
 		if (!_fields.count(doc->Children().at(0)->String())) {
@@ -141,9 +141,13 @@ TemplateChunk *TemplateParser::VisitTemplateExpression(astnode* doc) {
 	case Node_TemplateExprPlus: {
 		return new BinaryExpressionTemplateChunk(
 			BinaryExpressionTemplateChunk::PLUS,
-			*VisitTemplateExpression(doc->Children().at(0)),
-			*VisitTemplateExpression(doc->Children().at(1))
+			*VisitTemplateExpression(doc->Children().at(0), parent),
+			*VisitTemplateExpression(doc->Children().at(1), parent)
 		);
+	}
+	
+	case Node_TemplateExprPercent: {
+		return new BackRefTemplateChunk(*parent->GetChunkByIndex(std::stol(doc->Children().at(0)->String())));
 	}
 	
 	default:
