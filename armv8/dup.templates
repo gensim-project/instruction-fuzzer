@@ -1,0 +1,4 @@
+include fields.inc
+
+template dup [vreg].[arrgw], [wreg]
+template dup [vreg].[arrgx], [xreg]

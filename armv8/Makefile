@@ -8,10 +8,14 @@ captive := /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspin
 
 test-count := 1
 
+# BASE
 formats := adc add and asr bfi bfm bfxil bic ccmn ccmp cinc cinv cls clz cmn cmp cneg csel cset csetm csinc csinv
 formats += csneg eon eor extr lsl lsr madd mneg mov msub mul mvn neg ngc nop orn orr rbit rev ror sbc sbfiz sbfm sbfx
 formats += sdiv smaddl smnegl smsubl smulh smull sub sxtbhw tst ubfiz ubfm ubfx udiv umaddl umnegl umsubl umulh umull
 formats += uxtbh
+
+# SIMD
+formats += dup
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)
