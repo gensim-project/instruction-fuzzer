@@ -1,10 +1,17 @@
 harness := ../harness/armv8-native/harness
 generator := ../generator/generator
-as := aarch64-unknown-linux-gnueabi-as 
-objcopy := aarch64-unknown-linux-gnueabi-objcopy
 
-qemu := /disk/scratch/tspink/src/qemu/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
-captive := /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspink/captive/arch/aarch64.arch --platform simbench --block-dev-file /tmp/zero --semihosting
+ARMCCPREFIX?=aarch64-unknown-linux-gnueabi-
+
+as := $(ARMCCPREFIX)as 
+objcopy := $(ARMCCPREFIX)objcopy
+
+
+QEMU ?= /disk/scratch/tspink/src/qemu/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
+qemu := $(QEMU)
+
+CAPTIVE ?= /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspink/captive/arch/aarch64.arch --platform simbench --block-dev-file /tmp/zero --semihosting
+captive := $(CAPTIVE)
 
 test-count := 1
 
