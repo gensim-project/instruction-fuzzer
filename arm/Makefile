@@ -1,7 +1,10 @@
 harness := ../harness/arm/harness
 generator := ../generator/generator
-as := arm-unknown-linux-gnueabi-as -march=armv7-a -mcpu=cortex-a15
-objcopy := arm-unknown-linux-gnueabi-objcopy
+
+ARMCCPREFIX?=arm-unknown-linux-gnueabi-
+
+as := $(ARMCCPREFIX)as -march=armv7-a -mcpu=cortex-a15
+objcopy := $(ARMCCPREFIX)objcopy
 
 GENSIM_ROOT?=/home/harry/Work/gensim
 gensim-root := $(GENSIM_ROOT)
