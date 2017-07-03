@@ -1,11 +1,11 @@
-PREFIX?=arm-unknown-linux-gnueabi-
-CXX=$(PREFIX)g++
+ARMCCPREFIX?=arm-unknown-linux-gnueabi-
+CXX=$(ARMCCPREFIX)g++
 CXXFLAGS=-I../ -std=c++11 -static
 
-LD=$(PREFIX)g++ -static
+LD=$(ARMCCPREFIX)g++ -static
 LDFLAGS=-static
 
-CC=$(PREFIX)g++ -static
+CC=$(ARMCCPREFIX)g++ -static
 CFLAGS=-static
 
 harness : main.o harness.o test_fn.o
