@@ -29,5 +29,3 @@ template adds [wreg_zr], [wreg_zr], [wreg_zr]
 template adds [wreg_zr], [wreg_zr], [wreg_zr], [shift_type] #[shift_amt_w]
 template adds [xreg_zr], [xreg_zr], [xreg_zr]
 template adds [xreg_zr], [xreg_zr], [xreg_zr], [shift_type] #[shift_amt_x]
-
-template add [vreg].[arrg], [vreg].[%3], [vreg].[%3]
