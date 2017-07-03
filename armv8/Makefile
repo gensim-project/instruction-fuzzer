@@ -15,7 +15,7 @@ formats += sdiv smaddl smnegl smsubl smulh smull sub sxtbhw tst ubfiz ubfm ubfx 
 formats += uxtbh
 
 # SIMD
-formats += dup
+formats += add-simd dup
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)
