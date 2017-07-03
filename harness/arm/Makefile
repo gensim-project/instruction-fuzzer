@@ -13,3 +13,6 @@ harness : main.o harness.o test_fn.o
 
 main.o : ../main.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean: 
+	rm -f main.o harness.o test_fn.o harness
