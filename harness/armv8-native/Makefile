@@ -1,4 +1,4 @@
-PFX=aarch64-unknown-linux-gnueabi-
+PFX ?= aarch64-unknown-linux-gnueabi-
 CXX=$(PFX)g++
 AS=$(PFX)gcc
 CC=$(PFX)gcc
