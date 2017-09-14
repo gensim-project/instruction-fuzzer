@@ -21,8 +21,14 @@ formats += csneg eon eor extr lsl lsr madd mneg mov msub mul mvn neg ngc nop orn
 formats += sdiv smaddl smnegl smsubl smulh smull sub sxtbhw tst ubfiz ubfm ubfx udiv umaddl umnegl umsubl umulh umull
 formats += uxtbh
 
+# SPECIAL
+#formats += mrs
+
+# DEBUG
+formats += single
+
 # SIMD
-formats += add-simd dup
+formats += add-simd and-simd orr-simd dup umov cmeq
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)

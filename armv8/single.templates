@@ -1,0 +1,3 @@
+include fields.inc
+
+template cmeq v9.8b, v6.8b, v18.8b

@@ -1,0 +1,4 @@
+include fields.inc
+
+template and [vreg].8b, [vreg].8b, [vreg].8b
+template and [vreg].16b, [vreg].16b, [vreg].16b
