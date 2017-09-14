@@ -1,0 +1,7 @@
+include fields.inc
+
+template cmeq [dreg], [dreg], [dreg]
+template cmeq [vreg].[arrg], [vreg].[%3], [vreg].[%3]
+
+template cmeq [dreg], [dreg], #0
+template cmeq [vreg].[arrg], [vreg].[%3], #0

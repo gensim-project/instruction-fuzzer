@@ -1,3 +1,4 @@
 include fields.inc
 
 template add [vreg].[arrg], [vreg].[%3], [vreg].[%3]
+template addp [vreg].[arrg], [vreg].[%3], [vreg].[%3]

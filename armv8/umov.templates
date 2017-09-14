@@ -1,0 +1,6 @@
+include fields.inc
+
+template umov [wreg], [vreg].b\[[belemidx]\]
+template umov [wreg], [vreg].h\[[helemidx]\]
+template umov [wreg], [vreg].s\[[selemidx]\]
+template umov [xreg], [vreg].d\[[delemidx]\]
