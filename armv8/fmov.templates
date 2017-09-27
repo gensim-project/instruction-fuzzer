@@ -1,0 +1,6 @@
+include fields.inc
+
+template fmov [sreg], [sreg]
+template fmov [dreg], [dreg]
+
+template fmov [xreg], [dreg]

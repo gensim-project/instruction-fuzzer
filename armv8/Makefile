@@ -10,7 +10,7 @@ objcopy := $(ARMCCPREFIX)objcopy
 QEMU ?= /disk/scratch/tspink/src/qemu/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
 qemu := $(QEMU)
 
-CAPTIVE ?= /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspink/captive/arch/aarch64.arch --platform simbench --block-dev-file /tmp/zero --semihosting
+CAPTIVE ?= /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspink/captive/arch/aarch64.arch --platform simbench --block-dev-file /tmp/zero --semihosting angel
 captive := $(CAPTIVE)
 
 test-count := 1
@@ -28,7 +28,10 @@ formats += uxtbh
 formats += single
 
 # SIMD
-formats += add-simd and-simd orr-simd dup umov cmeq
+formats += add-simd and-simd orr-simd dup umov cmeq scvtf
+
+# Floating
+formats += fmov
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)

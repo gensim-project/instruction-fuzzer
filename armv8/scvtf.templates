@@ -1,0 +1,6 @@
+include fields.inc
+
+template scvtf [sreg], [wreg]
+template scvtf [dreg], [wreg]
+template scvtf [sreg], [xreg]
+template scvtf [dreg], [xreg]
