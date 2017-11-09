@@ -38,6 +38,7 @@ void generate_state(state_t *state) {
 	}
 	
 	state->flags = random() & 0xf0000000;
+	state->rounding_mode = 0;
 }
 
 void copy_test_to_slot(test_t *test) {

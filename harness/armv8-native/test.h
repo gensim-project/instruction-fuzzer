@@ -18,6 +18,7 @@ typedef struct {
 	} __attribute__((packed)) vregs[VREG_COUNT];				// 256 -- 768
 	
 	uint32_t flags;						// 768
+	uint32_t rounding_mode;				// 772
 } __attribute__((packed)) state_t;
 
 extern uint32_t test_slot;
