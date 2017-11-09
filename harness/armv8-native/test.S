@@ -51,7 +51,14 @@ execute_test:
 	// FLAGS
 	ldr x1, [x0, 768]
 	msr nzcv, x1
-	
+
+	// ROUNDING MODE (RZ: Round towads zero)
+	// FLUSH-TO-ZERO (0)
+	mrs x1, fpcr
+	and x1, x1, #0xfffffffffe3fffff
+	orr x1, x1, #0x0000000000c00000
+	msr fpcr, x1
+
 	ldp x0, x1, [x0]
 	
 	// execute test slot

@@ -1,4 +1,3 @@
 include fields.inc
 
-template ld1 { v0.16b, v1.16b }, \[x0\], x1
-
+template addp v1.2d, v28.2d, v7.2d
