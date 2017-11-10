@@ -1,0 +1,6 @@
+include fields.inc
+
+template ucvtf [sreg], [wreg]
+template ucvtf [dreg], [wreg]
+template ucvtf [sreg], [xreg]
+template ucvtf [dreg], [xreg]

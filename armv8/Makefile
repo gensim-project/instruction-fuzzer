@@ -1,16 +1,16 @@
 harness := ../harness/armv8-native/harness
 generator := ../generator/generator
 
-ARMCCPREFIX?=aarch64-unknown-linux-gnueabi-
+ARMCCPREFIX?=aarch64-linux-gnu-
 
 as := $(ARMCCPREFIX)as 
 objcopy := $(ARMCCPREFIX)objcopy
 
 
-QEMU ?= /disk/scratch/tspink/src/qemu/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
+QEMU ?= /home/tspink/src/qemu/aarch64-softmmu/qemu-system-aarch64 -M virt -cpu cortex-a53 -m 512 -nographic -semihosting
 qemu := $(QEMU)
 
-CAPTIVE ?= /disk/scratch/tspink/captive/bin/captive --engine /disk/scratch/tspink/captive/arch/aarch64.arch --platform simbench --block-dev-file /tmp/zero --semihosting angel
+CAPTIVE ?= /home/tspink/src/captive/bin/captive --engine /home/tspink/src/captive/arch/aarch64.arch --platform simbench --block-dev-file /tmp/zero --semihosting angel
 captive := $(CAPTIVE)
 
 test-count := 1
@@ -31,7 +31,7 @@ formats += single
 formats += add-simd and-simd orr-simd dup umov cmeq
 
 # Floating
-formats += scvtf fmov fmadd
+formats += scvtf ucvtf fmov fadd fmadd fcmpe
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)

@@ -1,11 +1,11 @@
-PFX ?= aarch64-unknown-linux-gnueabi-
+PFX ?= aarch64-linux-gnu-
 CXX=$(PFX)g++
 AS=$(PFX)gcc
 CC=$(PFX)gcc
 LD=$(PFX)ld
 
 CXXFLAGS=-std=c++11 -g -I$(PWD) -O2  -MMF -mgeneral-regs-only
-CFLAGS=-std=gnu11 -g -O2 -Werror=implicit-function-declaration -mgeneral-regs-only
+CFLAGS=-std=gnu11 -g -O2 -Werror=implicit-function-declaration -mgeneral-regs-only -fno-builtin
 LDFLAGS=-static
 
 sources = harness.o semihosting.o semihosting_call.o reset.o arch.o vectors.o exception.o main.o heap.o printf/vsnprintf.o test.o
