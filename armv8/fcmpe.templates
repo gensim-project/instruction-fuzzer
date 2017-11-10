@@ -1,0 +1,7 @@
+include fields.inc
+
+template fcmpe [sreg], [sreg]
+template fcmpe [sreg], #0.0
+
+template fcmpe [dreg], [dreg]
+template fcmpe [dreg], #0.0
