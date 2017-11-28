@@ -51,7 +51,10 @@ execute_test:
 	// FLAGS
 	ldr x1, [x0, 768]
 	msr nzcv, x1
-
+	
+	ldr x1, [x0, 776]
+	msr fpsr, x1
+	
 	// ROUNDING MODE (RZ: Round towads zero)
 	// FLUSH-TO-ZERO (0)
 	mrs x1, fpcr
@@ -112,6 +115,9 @@ test_slot:
 	// FLAGS
 	mrs x0, nzcv
 	str x0, [x2, 768]
+	
+	mrs x0, fpsr
+	str x0, [x2, 776]
 	
 	add sp, sp, #16
 	

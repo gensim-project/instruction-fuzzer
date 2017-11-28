@@ -1,0 +1,7 @@
+include fields.inc
+
+template fccmp [sreg], [sreg], #[nzcv], [cond]
+template fccmp [dreg], [dreg], #[nzcv], [cond]
+
+template fccmpe [sreg], [sreg], #[nzcv], [cond]
+template fccmpe [dreg], [dreg], #[nzcv], [cond]

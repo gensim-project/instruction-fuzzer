@@ -39,6 +39,7 @@ void generate_state(state_t *state) {
 	
 	state->flags = random() & 0xf0000000;
 	state->rounding_mode = 0;
+	state->fpsr = 0;
 }
 
 void copy_test_to_slot(test_t *test) {
@@ -58,6 +59,7 @@ void test_results(state_t *input, state_t *output) {
 		printf("V%u\t%lx:%lx\t%lx:%lx\n", i, input->vregs[i].hi, input->vregs[i].lo, output->vregs[i].hi, output->vregs[i].lo);
 	}
 	printf("FLAGS\t%lx\t%lx\n", input->flags, output->flags);
+	//printf("FPSR\t%lx\t%lx\n", input->fpsr, output->fpsr);
 }
 
 void run_test(test_t *test) {

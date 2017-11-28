@@ -1,0 +1,4 @@
+include fields.inc
+
+template fabs [sreg], [sreg]
+template fabs [dreg], [dreg]

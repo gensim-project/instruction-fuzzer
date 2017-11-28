@@ -1,0 +1,4 @@
+include fields.inc
+
+template fneg [sreg], [sreg]
+template fneg [dreg], [dreg]

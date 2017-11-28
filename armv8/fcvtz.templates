@@ -1,0 +1,11 @@
+include fields.inc
+
+template fcvtzs [wreg], [sreg]
+template fcvtzs [wreg], [dreg]
+template fcvtzs [xreg], [sreg]
+template fcvtzs [xreg], [dreg]
+
+template fcvtzu [wreg], [sreg]
+template fcvtzu [wreg], [dreg]
+template fcvtzu [xreg], [sreg]
+template fcvtzu [xreg], [dreg]

@@ -1,4 +1,0 @@
-include fields.inc
-
-template fmadd [sreg], [sreg], [sreg], [sreg]
-template fmadd [dreg], [dreg], [dreg], [dreg]

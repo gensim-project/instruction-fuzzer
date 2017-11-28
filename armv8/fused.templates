@@ -1,0 +1,11 @@
+include fields.inc
+
+template fmadd [sreg], [sreg], [sreg], [sreg]
+template fmadd [dreg], [dreg], [dreg], [dreg]
+template fmsub [sreg], [sreg], [sreg], [sreg]
+template fmsub [dreg], [dreg], [dreg], [dreg]
+
+template fnmadd [sreg], [sreg], [sreg], [sreg]
+template fnmadd [dreg], [dreg], [dreg], [dreg]
+template fnmsub [sreg], [sreg], [sreg], [sreg]
+template fnmsub [dreg], [dreg], [dreg], [dreg]

@@ -19,6 +19,7 @@ typedef struct {
 	
 	uint32_t flags;						// 768
 	uint32_t rounding_mode;				// 772
+	uint32_t fpsr;						// 776
 } __attribute__((packed)) state_t;
 
 extern uint32_t test_slot;
