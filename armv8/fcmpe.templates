@@ -1,5 +1,11 @@
 include fields.inc
 
+template fcmp [sreg], [sreg]
+template fcmp [sreg], #0.0
+
+template fcmp [dreg], [dreg]
+template fcmp [dreg], #0.0
+
 template fcmpe [sreg], [sreg]
 template fcmpe [sreg], #0.0
 

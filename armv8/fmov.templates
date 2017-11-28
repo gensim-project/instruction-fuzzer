@@ -3,4 +3,10 @@ include fields.inc
 template fmov [sreg], [sreg]
 template fmov [dreg], [dreg]
 
+template fmov [sreg], [wreg]
+template fmov [wreg], [sreg]
+template fmov [dreg], [xreg]
 template fmov [xreg], [dreg]
+
+template fmov [vreg].D\[1\], [xreg]
+template fmov [xreg], [vreg].D\[1\]

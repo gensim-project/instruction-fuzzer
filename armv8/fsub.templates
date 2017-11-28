@@ -1,0 +1,4 @@
+include fields.inc
+
+template fsub [sreg], [sreg], [sreg]
+template fsub [dreg], [dreg], [dreg]

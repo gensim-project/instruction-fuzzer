@@ -1,0 +1,4 @@
+include fields.inc
+
+template fcsel [sreg], [sreg], [sreg], [cond]
+template fcsel [dreg], [dreg], [dreg], [cond]

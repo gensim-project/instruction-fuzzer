@@ -1,0 +1,5 @@
+include fields.inc
+
+template fdiv [sreg], [sreg], [sreg]
+template fdiv [dreg], [dreg], [dreg]
+

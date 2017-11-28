@@ -1,0 +1,4 @@
+include fields.inc
+
+template fmul [sreg], [sreg], [sreg]
+template fmul [dreg], [dreg], [dreg]

@@ -28,10 +28,11 @@ formats += uxtbh
 formats += single
 
 # SIMD
-formats += add-simd and-simd orr-simd dup umov cmeq
+formats += add-simd and-simd orr-simd dup umov cmeq cnt
 
 # Floating
-formats += scvtf ucvtf fmov fadd fmadd fcmpe
+formats += scvtf ucvtf fmov fadd fsub fmul fdiv fneg fused fcmpe fcvtz movi
+formats += fcsel fabs
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)
