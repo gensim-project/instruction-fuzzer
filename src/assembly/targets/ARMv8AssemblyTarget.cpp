@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-#include "../AssemblyTarget.h"
-#include "../ComponentManager.h"
+#include "assembly/AssemblyTarget.h"
+#include "util/ComponentManager.h"
 
 #include <map>
 
@@ -17,6 +17,7 @@ public:
 	virtual void PrintHeader() override;
 	virtual void PrintFooter() override;
 	
+	virtual void PrintBareTemplate(const Template &) override;
 	virtual void PrintTemplate(const Template &) override;
 
 private:
@@ -71,16 +72,20 @@ void ARMv8AssemblyTarget::PrintChunk(const TemplateChunk *chunk, std::map<const 
 	}
 }
 
-void ARMv8AssemblyTarget::PrintTemplate(const Template &t)
+void ARMv8AssemblyTarget::PrintBareTemplate(const Template &t)
 {
 	std::map<const TemplateChunk *, std::string> backrefs;
-	
-	// Prefix each instruction with its size
-	print(".word 2f-1f\n");
-	print("1:\n");
 	for(auto &chunk : t) {
 		PrintChunk(chunk, backrefs);
 	}
+}
+
+void ARMv8AssemblyTarget::PrintTemplate(const Template &t)
+{
+	// Prefix each instruction with its size
+	print(".word 2f-1f\n");
+	print("1:\n");
+	PrintBareTemplate(t);
 	print("\n");
 	print("2:\n");
 }

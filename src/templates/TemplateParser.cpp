@@ -1,4 +1,4 @@
-#include "TemplateParser.h"
+#include "templates/TemplateParser.h"
 #include "fuzzer-parser.h"
 #include "fuzzer-syntax.tabs.h"
 #include "fuzzer-syntax.l.h"
@@ -11,6 +11,10 @@ static std::string yyfilename;
 bool TemplateParser::Parse(const char *filename) {
 	//~ printf("Parsing %s\n", filename);
 	FILE *f = fopen(filename, "r");
+	if(f == nullptr) {
+		return false;
+	}
+	
 	yyscan_t scanner;
 	
 	yylex_init(&scanner);

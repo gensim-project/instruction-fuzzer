@@ -3,10 +3,10 @@
 #include <cstdint>
 #include <cstdio>
 
-#include "AssemblyTarget.h"
-#include "ComponentManager.h"
-#include "Template.h"
-#include "TemplateParser.h"
+#include "assembly/AssemblyTarget.h"
+#include "util/ComponentManager.h"
+#include "templates/Template.h"
+#include "templates/TemplateParser.h"
 
 #include <iostream>
 

@@ -4,7 +4,7 @@
 
 #define yyerminate() return ENDOFFILE
 
-#include "TemplateParser.h"
+#include "templates/TemplateParser.h"
 #include "fuzzer-parser.h"
 
 #include "fuzzer-syntax.tabs.h"
@@ -49,14 +49,14 @@ int l_debug = 0;
 <ML_FILENAME>"\n" 					{ BEGIN(INITIAL); return NEWLINE; }
 
 <ML_FIELDID>[ \t]					{}
-<ML_FIELDID>[a-zA-Z_1-9]+  			{ BEGIN(ML_FIELD); yylval->sval = strdup(yytext); return FIELDID; }
+<ML_FIELDID>[a-zA-Z_0-9]+  			{ BEGIN(ML_FIELD); yylval->sval = strdup(yytext); return FIELDID; }
 
 <ML_FIELD>[ \t]                     {}
-<ML_FIELD>[a-zA-Z0-9_#]+ 			{ yylval->sval = strdup(yytext); return FIELDTEXT; }
+<ML_FIELD>[a-zA-Z0-9_#.\-!+]+ 			{ yylval->sval = strdup(yytext); return FIELDTEXT; }
 <ML_FIELD>\"[^"]*\" 				{ yylval->sval = strdup(yytext+1); yylval->sval[strlen(yylval->sval)-1] = '\0'; return FIELDTEXT; }
 <ML_FIELD>"\n" 						{ BEGIN(INITIAL); return NEWLINE; }
 
-<ML_TEMPLATE>[a-zA-Z0-9,.{}_\-# ]+ 	{ yylval->sval = strdup(yytext); return TEMPLATETEXT; }
+<ML_TEMPLATE>[a-zA-Z0-9,.{}_\-#!+: ]+ 	{ yylval->sval = strdup(yytext); return TEMPLATETEXT; }
 <ML_TEMPLATE>"\\"[\[\]]             { yylval->sval = strdup(yytext+1); return TEMPLATETEXT; }
 <ML_TEMPLATE>"[" 					{ BEGIN(ML_TEMPLATE_EXPRESSION); return OBRACKET; }
 <ML_TEMPLATE>"\n" 					{ BEGIN(INITIAL); return NEWLINE; }

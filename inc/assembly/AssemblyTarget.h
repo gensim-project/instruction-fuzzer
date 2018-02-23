@@ -1,7 +1,7 @@
 #ifndef _ASSEMBLY_TARGET_H
 #define _ASSEMBLY_TARGET_H
 
-#include "Template.h"
+#include "templates/Template.h"
 
 #include <ostream>
 
@@ -14,6 +14,7 @@ public:
 	virtual void PrintFooter() = 0;
 	
 	virtual void PrintTemplate(const Template &) = 0;
+	virtual void PrintBareTemplate(const Template &) = 0;
 	virtual void PrintTemplateCollection(const TemplateCollection &);
 	
 	void SetCountPerTemplate(uint32_t i) { _count_per_template = i; }

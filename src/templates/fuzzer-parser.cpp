@@ -1,5 +1,5 @@
 #include "fuzzer-parser.h"
-#include "TemplateParser.h"
+#include "templates/TemplateParser.h"
 
 #include <cassert>
 #include <cstring>

@@ -1,6 +1,6 @@
 %{
 #include "fuzzer-parser.h"
-#include "TemplateParser.h"
+#include "templates/TemplateParser.h"
 
 #include <cstdio>
 #include <iostream>
