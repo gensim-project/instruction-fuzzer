@@ -3,17 +3,37 @@ generator := ../generator/generator
 as := arm-unknown-linux-gnueabi-as -march=armv7-a
 objcopy := arm-unknown-linux-gnueabi-objcopy
 
-gensim-root := ../../../../../
+gensim-root := /home/harry/Work/new-gensim-repo/
 qemu := /home/harry/Work/qemu/qemu-2.5.0/arm-linux-user/qemu-arm
-model := $(gensim-root)/arm_v5_dynamic/output_blockjit/armv5e.dll
-arcsim-bin := $(gensim-root)/arcsim/bin/arcsim
-arcsim := $(arcsim-bin) -p $(model) -s armv5e -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
+arcsim-bin := $(gensim-root)/build/dist/bin/archsim
+arcsim := $(arcsim-bin) -s armv7a -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
 
 
 test-count := 1
 
-formats := vabs vadd vcmp vcvt vdiv veor vext vmlal vmlsl vmla vmov vmrs vmsr vmull vmul vneg vnmla vrev vrshrn vshl vshr vsli vsqrt vsri vsub vtrn vzip
-#formats = mov
+formats := vabs vadd vcmp vcvt vdiv veor vext vmlal vmlsl vmla vmov vmrs vmsr \
+	vmull_s16 \
+	vmull_s32 \
+	vmull_u16 \
+	vmull_u32 \
+	\
+	vmul_f32 \
+	vmul_f64 \
+	\
+	vmul_i8 \
+	vmul_i16 \
+	vmul_i32 \
+	\
+	vmul_s_f32 \
+	vmul_s_i16 \
+	vmul_s_i32 \
+	vmul_s_s16 \
+	vmul_s_s32 \
+	vmul_s_u16 \
+	vmul_s_u32 \
+	\
+	vneg vnmla vrev vrshrn vshl vshr vsli vsqrt vsri vsub vtrn vzip
+
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)
 objects  := $(formats:%=%.o)

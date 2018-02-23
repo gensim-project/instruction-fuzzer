@@ -1,0 +1,7 @@
+include fields.inc
+
+template vmul.s32 [qreg], [qreg], [low16_dreg]\[0 \]
+template vmul.s32 [qreg], [qreg], [low16_dreg]\[1 \]
+
+template vmul.s32 [dreg], [dreg], [low16_dreg]\[0 \]
+template vmul.s32 [dreg], [dreg], [low16_dreg]\[1 \]

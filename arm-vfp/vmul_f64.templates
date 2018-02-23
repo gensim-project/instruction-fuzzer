@@ -1,0 +1,3 @@
+include fields.inc
+
+template vmul.f64 [dreg], [dreg], [dreg]

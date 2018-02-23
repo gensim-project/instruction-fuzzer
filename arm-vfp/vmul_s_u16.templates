@@ -1,0 +1,11 @@
+include fields.inc
+
+template vmul.u16 [qreg], [qreg], [low8_dreg]\[0 \]
+template vmul.u16 [qreg], [qreg], [low8_dreg]\[1 \]
+template vmul.u16 [qreg], [qreg], [low8_dreg]\[2 \]
+template vmul.u16 [qreg], [qreg], [low8_dreg]\[3 \]
+
+template vmul.u16 [dreg], [dreg], [low8_dreg]\[0 \]
+template vmul.u16 [dreg], [dreg], [low8_dreg]\[1 \]
+template vmul.u16 [dreg], [dreg], [low8_dreg]\[2 \]
+template vmul.u16 [dreg], [dreg], [low8_dreg]\[3 \]

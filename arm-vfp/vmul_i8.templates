@@ -1,0 +1,4 @@
+include fields.inc
+
+template vmul.i8 [dreg], [dreg], [dreg]
+template vmul.i8 [qreg], [qreg], [qreg]
