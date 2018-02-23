@@ -1,4 +1,4 @@
-
+CXXFLAGS=-O2
 HARNESS_ARCHS=$(shell ls -d harness/*/)
 HARNESSES=$(HARNESS_ARCHS:%=%/harness)
 

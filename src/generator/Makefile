@@ -1,4 +1,4 @@
-CXXFLAGS=-std=c++11 -Wall -O0 -g  -I../../inc/ -fPIC
+CXXFLAGS:=-std=c++11 -Wall -g  -I../../inc/ -fPIC $(CXXFLAGS)
 
 GENERATOR_OBJECTS=main.o
 GENERATOR_BINARY=generator
