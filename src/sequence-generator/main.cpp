@@ -14,7 +14,8 @@ int main(int argc, char **argv)
 	
 	int arch_idx = 1;
 	int length_idx = 2;
-	int templates_idx = 3;
+	int seed_idx = 3;
+	int templates_idx = 4;
 	
 	for(int i = templates_idx; i < argc; ++i) {
 		template_files.push_back(argv[i]);
@@ -37,11 +38,16 @@ int main(int argc, char **argv)
 	}
 	int count = strtol(argv[length_idx], nullptr, 10);
 	
+	srand(strtol(argv[seed_idx],nullptr, 10));
 	as->PrintHeader();
+	std::cout << ".byte 2f - 1f" << std::endl;
+	std::cout << "1:" << std::endl;
 	auto &templates = parser.Get();
 	for(int i = 0; i < count; ++i) {
-		as->PrintTemplate(templates.at(rand() % templates.size()));
+		as->PrintBareTemplate(templates.at(rand() % templates.size()));
+		std::cout << std::endl;
 	}
+	std::cout << "2:" << std::endl;
 	as->PrintFooter();
 	
 	return 0;
