@@ -37,6 +37,8 @@ void ARMAssemblyTarget::PrintHeader()
 void ARMAssemblyTarget::PrintFooter()
 {
 	print(".globl instructions_end\n");
+	print("instructions_end:\n");
+	print(".word 0\n");
 	print("instructions_count:\n");
 	//print(".word %u\n", GetProcessedTemplateCount());
 }

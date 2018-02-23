@@ -56,9 +56,6 @@ int main(int argc, char **argv)
 		Descriptor *test = LoadTest(input);
 		if(!input.good()) break;
 		if(test->GetSize() == 0) break;
-		uint32_t blah;
-		test->CopyTo((uint8_t*)&blah);
-		printf("Read test %08x\n", blah);
 		
 		int count = runs_per_input;
 		HarnessPrepareTest(*test);

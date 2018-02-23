@@ -4,22 +4,23 @@
 #include <random>
 #include <iomanip>
 #include <sstream>
+#include <map>
 
 #include <sys/mman.h>
 
-extern "C" void test_fn();
-extern "C" uint32_t test_slot;
+extern "C" uint32_t test_fn_preamble_size, test_fn_postamble_size;
+extern void *test_fn_preamble, *test_fn_postamble;
 
 struct register_state {
-	uint32_t gprs[13];
 	uint32_t CPSR;
+	uint32_t gprs[13];
 };
 
 struct result_state {
 	struct register_state input, output;
 };
 
-extern struct register_state input_state, output_state;
+struct register_state input_state, output_state;
 
 typedef std::mt19937 random_engine_t;
 random_engine_t random_engine;
@@ -45,23 +46,55 @@ void unprotect_page(void *addr)
 
 void HarnessInitialize()
 {
-	unprotect_page((void*)&test_slot);
 	unprotect_page((void*)&input_state);
 	unprotect_page((void*)&output_state);
 }
 
-void HarnessPrepareTest(const Descriptor &test)
+typedef void (*function_t)(struct register_state *in, struct register_state *out);
+class TestFunction {
+public:
+	std::vector<unsigned char> storage;
+	function_t function;
+	void *test_slot;
+};
+std::map<size_t, TestFunction*> test_fn_locations;
+
+static void GenerateTestFunction(size_t size)
 {
-	// ARM only supports 4 byte instructions (need a different harness for thumb/thumb2)
-	if(test.GetSize() != 4) {
-		fprintf(stderr, "Error! Test instruction size is %u (should be 4)\n", test.GetSize());
-		assert(false);
+	assert(test_fn_locations.count(size) == 0);
+	
+	TestFunction *tf = new TestFunction();
+	
+	size_t total_size = size + test_fn_preamble_size + test_fn_postamble_size;
+	tf->storage.resize(total_size);
+	tf->function = (function_t)tf->storage.data();
+	
+	char *preamble = (char*)&test_fn_preamble;
+	for(auto i = 0; i < test_fn_preamble_size; ++i) {
+		tf->storage.at(i) = preamble[i];
 	}
 	
+	char *postamble = (char*)&test_fn_postamble;
+	for(auto i = 0; i < test_fn_postamble_size; ++i) {
+		tf->storage.at(i + test_fn_preamble_size + size) = postamble[i];
+	}
 	
-	test.CopyTo((uint8_t*)&test_slot);
-	__builtin___clear_cache((void*)test_slot, (void*)(((uint8_t*)&test_slot)+4));
-		
+	__builtin___clear_cache((void*)tf->function, (void*)((char*)tf->function + total_size));
+	
+	tf->test_slot = (void*)((char*)tf->function + test_fn_preamble_size);
+	
+	test_fn_locations[size] = tf;
+}
+
+void HarnessPrepareTest(const Descriptor &test)
+{
+	if(!test_fn_locations.count(test.GetSize())) {
+		GenerateTestFunction(test.GetSize());
+	}
+	
+	TestFunction *fn = test_fn_locations.at(test.GetSize());
+	test.CopyTo((uint8_t*)fn->test_slot);
+	__builtin___clear_cache((void*)fn->test_slot, (void*)(((uint8_t*)fn->test_slot)+test.GetSize()));	
 }
 
 void HarnessRunTest(const Descriptor &test, Descriptor *&results)
@@ -70,7 +103,7 @@ void HarnessRunTest(const Descriptor &test, Descriptor *&results)
 	
 	RandomizeInputState();
 	
-	test_fn();
+	test_fn_locations.at(test.GetSize())->function(&input_state, &output_state);
 	
 	struct result_state result_struct;
 	result_struct.input = input_state;

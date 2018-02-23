@@ -1,20 +1,19 @@
 harness := ../harness/arm/harness
-generator := ../generator/generator
+generator := ../src/generator/generator
 
 ARMCCPREFIX?=arm-unknown-linux-gnueabi-
 
 as := $(ARMCCPREFIX)as -march=armv7-a -mcpu=cortex-a15
 objcopy := $(ARMCCPREFIX)objcopy
 
-GENSIM_ROOT?=/home/harry/Work/gensim
+GENSIM_ROOT?=/home/harry/Work/new-gensim-repo
 gensim-root := $(GENSIM_ROOT)
 
 QEMU?=/home/harry/Work/qemu/qemu-2.5.0/arm-linux-user/qemu-arm
 qemu := $(QEMU)
 
-model := $(gensim-root)/arm_v5_dynamic/output_blockjit/armv5e.dll
-arcsim-bin := $(gensim-root)/arcsim/bin/arcsim
-arcsim := $(arcsim-bin) -p $(model) -s armv5e -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
+arcsim-bin := $(gensim-root)/build/dist/bin/archsim
+arcsim := $(arcsim-bin) -s armv7a -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
 
 
 test-count := 50
