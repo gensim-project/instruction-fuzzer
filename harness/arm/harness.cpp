@@ -14,7 +14,12 @@ extern void *test_fn_preamble, *test_fn_postamble;
 struct register_state {
 	uint32_t CPSR;
 	uint32_t gprs[13];
-};
+	uint32_t FPSCR;
+	union {
+		float sprs[64];
+		double dprs[32];
+	};
+} __attribute__((packed));
 
 struct result_state {
 	struct register_state input, output;
@@ -27,11 +32,18 @@ random_engine_t random_engine;
 
 void RandomizeInputState()
 {
-	for(auto &i : input_state.gprs) {
-		i = random_engine();
+	for(int i = 0; i < 13; ++i) {
+		input_state.gprs[i] = random_engine();
+	}
+	for(int i = 0; i < 32; ++i) {
+		input_state.sprs[i] = (10000*random_engine()) / (10000*(double)random_engine());
+	}
+	for(int i = 16; i < 32; ++i) {
+		input_state.dprs[i] = (10000*random_engine()) / (10000*(double)random_engine());
 	}
 	
 	input_state.CPSR = (random_engine() & 0xf) << 28;
+	input_state.FPSCR = (random_engine() & 0xf) << 28;
 }
 
 void unprotect_page(void *addr)
@@ -117,6 +129,13 @@ void HarnessShutdown()
 	
 }
 
+uint32_t bc_float(float f)
+{
+	union {float a; uint32_t b; };
+	a = f;
+	return b;
+}
+
 std::string HarnessFormatResult(const Descriptor &test, const Descriptor &result)
 {
 	struct result_state data;
@@ -133,11 +152,20 @@ std::string HarnessFormatResult(const Descriptor &test, const Descriptor &result
 		str << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << data.input.gprs[i] << " -> " << std::hex << std::setw(8) << std::setfill('0') << data.output.gprs[i] << std::endl;
 	}
 	
+	for(int i = 0; i < 64; ++i) {
+		str << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << bc_float(data.input.sprs[i]) << " -> " <<  std::setw(8) << std::setfill('0') << bc_float(data.output.sprs[i]) << std::endl;
+	}
+	
 	data.input.CPSR &= ~(1 << 8);
 	data.output.CPSR &= ~(1 << 8);
-	if(data.input.CPSR != data.output.CPSR)
-		str << std::hex << std::setw(8) << std::setfill('0') << data.input.CPSR << " -> " << std::hex << std::setw(8) << std::setfill('0') << data.output.CPSR << std::endl;
-	str << std::endl;
+	str << "CPSR " << std::hex << std::setw(8) << std::setfill('0') << data.input.CPSR << " -> " << std::hex << std::setw(8) << std::setfill('0') << data.output.CPSR << std::endl;
 	
+	uint32_t input_fpscr = data.input.FPSCR & 0xf0000000;
+	uint32_t output_fpscr = data.output.FPSCR & 0xf0000000;
+	
+    str << "FPSCR " << std::hex << std::setw(8) << std::setfill('0') << input_fpscr  << " -> " << std::hex << std::setw(8) << std::setfill('0') << (output_fpscr) << std::endl;
+    
+	
+	str << std::endl;
 	return str.str();
 }

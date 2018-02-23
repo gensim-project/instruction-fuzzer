@@ -1,6 +1,6 @@
 ARMCCPREFIX?=arm-unknown-linux-gnueabi-
 CXX=$(ARMCCPREFIX)g++
-CXXFLAGS=-I../ -std=c++11 -static
+CXXFLAGS=-I../ -std=c++11 -static -O2
 
 LD=$(ARMCCPREFIX)g++ -static
 LDFLAGS=-static
