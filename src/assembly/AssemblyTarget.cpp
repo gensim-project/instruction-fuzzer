@@ -1,5 +1,5 @@
-#include "AssemblyTarget.h"
-#include "ComponentManager.h"
+#include "assembly/AssemblyTarget.h"
+#include "util/ComponentManager.h"
 
 #include <cstdarg>
 

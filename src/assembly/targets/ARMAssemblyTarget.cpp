@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-#include "../AssemblyTarget.h"
-#include "../ComponentManager.h"
+#include "assembly/AssemblyTarget.h"
+#include "util/ComponentManager.h"
 
 class ARMAssemblyTarget : public AssemblyTarget
 {
@@ -15,6 +15,7 @@ public:
 	virtual void PrintHeader() override;
 	virtual void PrintFooter() override;
 	
+	virtual void PrintBareTemplate(const Template &) override;
 	virtual void PrintTemplate(const Template &) override;
 };
 
@@ -40,12 +41,8 @@ void ARMAssemblyTarget::PrintFooter()
 	//print(".word %u\n", GetProcessedTemplateCount());
 }
 
-void ARMAssemblyTarget::PrintTemplate(const Template &t)
+void ARMAssemblyTarget::PrintBareTemplate(const Template &t)
 {
-	// Prefix each instruction with its size
-	
-	print(".byte 2f-1f\n");
-	print("1:\n");
 	for(auto &chunk : t) {
 		if(auto string_chunk = dynamic_cast<const StringTemplateChunk*>(chunk)) {
 			print("%s", string_chunk->Get().c_str());
@@ -57,6 +54,15 @@ void ARMAssemblyTarget::PrintTemplate(const Template &t)
 			print("???");
 		}
 	}
+}
+
+void ARMAssemblyTarget::PrintTemplate(const Template &t)
+{
+	// Prefix each instruction with its size
+	
+	print(".byte 2f-1f\n");
+	print("1:\n");
+	PrintBareTemplate(t);
 	print("\n");
 	print("2:\n");
 }

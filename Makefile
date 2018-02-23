@@ -3,9 +3,9 @@ HARNESS_ARCHS=$(shell ls -d harness/*/)
 HARNESSES=$(HARNESS_ARCHS:%=%/harness)
 
 all: 
-	+ cd generator; make
+	+ cd src; make
 	+ cd harness; make
 
 clean :
-	make -C generator clean
+	make -C src clean
 	make -C harness clean
