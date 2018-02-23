@@ -1,9 +1,12 @@
 .arm
+.fpu neon
 .text
 
 // input context:
 // uint32 cpsr
 // uint32 gprs[13]
+// uint32 fpcsr
+// uint32 S[64]
 
 // Set up the input context (pointer in r0) and store the output 
 // context pointer (r1)
@@ -11,9 +14,27 @@
 test_fn_preamble:
 	push {r0-r12}
 	push {r1}
+	
+	// Load CPSR
 	ldr r1, [r0]
 	msr CPSR_f, r1
 	
+	// Load FPCSR
+	ldr r1, [r0, #(4*14)]
+	and r1, #0xf0000000
+	
+	vmrs r2, fpscr
+	and r2, #0x0fffffff
+	
+	orr r1, r1, r2
+	vmsr fpscr, r1
+	
+	// Load FPRegs
+	add r1, r0, #(4 * 15)
+	vldm r1!, {d0-d15}
+	vldm r1!, {d16-d31}
+	
+	// Load GRegs
 	add r0, #4
 	ldm r0, {r0-r12}
 
@@ -26,12 +47,24 @@ test_fn_postamble:
 	push {r14}
 	// load back the output context pointer off the stack
 	ldr r14, [sp,#4]
+	
+	// Store GRegs
 	add r14, #4
 	stm r14, {r0-r12}
 	
+	// Store CPSR
 	sub r14, #4
 	mrs r0, CPSR
 	str r0, [r14]
+	
+	// Store FPSCR
+	vmrs r0, FPSCR
+	str r0, [r14, #(4*14)]
+	
+	// Store FPRegs
+	add r14, #(4*15)
+	vstm r14!, {d0-d15}
+	vstm r14, {d16-d31}
 	
 	pop {r14}
 	pop {r1}
