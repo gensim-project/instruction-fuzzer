@@ -1,5 +1,5 @@
-harness := ../harness/arm-vfp/harness
-generator := ../generator/generator
+harness := ../harness/arm/harness
+generator := ../src/generator/generator
 as := arm-unknown-linux-gnueabi-as -march=armv7-a
 objcopy := arm-unknown-linux-gnueabi-objcopy
 
@@ -9,7 +9,7 @@ arcsim-bin := $(gensim-root)/build/dist/bin/archsim
 arcsim := $(arcsim-bin) -s armv7a -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
 
 
-test-count := 1
+test-count := 10
 
 formats := vabs vadd vcmp vcvt vdiv veor vext vmlal vmlsl vmla vmov vmrs vmsr \
 	vmull_s16 \

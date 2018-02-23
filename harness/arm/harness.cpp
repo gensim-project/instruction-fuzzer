@@ -148,23 +148,26 @@ std::string HarnessFormatResult(const Descriptor &test, const Descriptor &result
 	
 	str << "Test " << std::hex << std::setw(8) << std::setfill('0') << test_insn << std::endl;
 	
-	for(int i = 0; i < 13; ++i) {
-		str << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << data.input.gprs[i] << " -> " << std::hex << std::setw(8) << std::setfill('0') << data.output.gprs[i] << std::endl;
+	if(memcmp(&data.input, &data.output, sizeof(data.input))) {
+		for(int i = 0; i < 13; ++i) {
+			str << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << data.input.gprs[i] << " -> " << std::hex << std::setw(8) << std::setfill('0') << data.output.gprs[i] << std::endl;
+		}
+		
+		for(int i = 0; i < 64; ++i) {
+			str << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << bc_float(data.input.sprs[i]) << " -> " <<  std::setw(8) << std::setfill('0') << bc_float(data.output.sprs[i]) << std::endl;
+		}
+		
+		data.input.CPSR &= ~(1 << 8);
+		data.output.CPSR &= ~(1 << 8);
+		str << "CPSR " << std::hex << std::setw(8) << std::setfill('0') << data.input.CPSR << " -> " << std::hex << std::setw(8) << std::setfill('0') << data.output.CPSR << std::endl;
+		
+		uint32_t input_fpscr = data.input.FPSCR & 0xf0000000;
+		uint32_t output_fpscr = data.output.FPSCR & 0xf0000000;
+		
+		str << "FPSCR " << std::hex << std::setw(8) << std::setfill('0') << input_fpscr  << " -> " << std::hex << std::setw(8) << std::setfill('0') << (output_fpscr) << std::endl;
+    } else {
+		str << "OK" << std::endl;
 	}
-	
-	for(int i = 0; i < 64; ++i) {
-		str << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << bc_float(data.input.sprs[i]) << " -> " <<  std::setw(8) << std::setfill('0') << bc_float(data.output.sprs[i]) << std::endl;
-	}
-	
-	data.input.CPSR &= ~(1 << 8);
-	data.output.CPSR &= ~(1 << 8);
-	str << "CPSR " << std::hex << std::setw(8) << std::setfill('0') << data.input.CPSR << " -> " << std::hex << std::setw(8) << std::setfill('0') << data.output.CPSR << std::endl;
-	
-	uint32_t input_fpscr = data.input.FPSCR & 0xf0000000;
-	uint32_t output_fpscr = data.output.FPSCR & 0xf0000000;
-	
-    str << "FPSCR " << std::hex << std::setw(8) << std::setfill('0') << input_fpscr  << " -> " << std::hex << std::setw(8) << std::setfill('0') << (output_fpscr) << std::endl;
-    
 	
 	str << std::endl;
 	return str.str();
