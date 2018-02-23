@@ -8,5 +8,7 @@ field imm1t32 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 
 field imm0t31 0 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 31
 field imm0t15 0 2 3 4 5 6 7 8 9 10 11 12 13 14 15
 
+field low16_dreg d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 d14 d15
+field low8_dreg d0 d1 d2 d3 d4 d5 d6 d7 
 
 field fpimm #1.0 #2.0 #-1.0 #-0.5
