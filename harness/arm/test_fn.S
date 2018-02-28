@@ -12,7 +12,14 @@
 // context pointer (r1)
 .globl test_fn_preamble
 test_fn_preamble:
-	push {r0-r12}
+	push {r0-r12, r14}
+
+	// back up cpsr
+	mrs r2, CPSR
+	push {r2}
+	vmrs r2, fpscr
+	push {r2}
+
 	push {r1}
 	
 	// Load CPSR
@@ -37,6 +44,10 @@ test_fn_preamble:
 	// Load GRegs
 	add r0, #4
 	ldm r0, {r0-r12}
+	
+	adr r14, 1f
+	bx r14
+1:
 
 .globl test_fn_preamble_end
 test_fn_preamble_end:
@@ -44,6 +55,10 @@ test_fn_preamble_end:
 // Store back the test results and return
 .globl test_fn_postamble
 test_fn_postamble:
+	adr r14, 1f
+	bx r14
+1:
+
 	push {r14}
 	// load back the output context pointer off the stack
 	ldr r14, [sp,#4]
@@ -67,8 +82,15 @@ test_fn_postamble:
 	vstm r14, {d16-d31}
 	
 	pop {r14}
+	
 	pop {r1}
-	pop {r0-r12}
+	
+	pop {r1}
+	vmsr fpscr, r1
+	pop {r1}
+	msr cpsr, r1
+	
+	pop {r0-r12, r14}
 	
 	bx lr
 
