@@ -9,9 +9,9 @@ arcsim-bin := $(gensim-root)/build/dist/bin/archsim
 arcsim := $(arcsim-bin) -s armv7a -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
 
 
-test-count := 10
+test-count := 100
 
-formats := vabs vadd vcmp vcvt vdiv veor vext vmlal vmlsl vmla vmov vmrs vmsr \
+formats := vabs vadd vcmp vcvt vdiv veor vext vmlal vmlsl vmla vmov vmrs  \
 	vmull_s16 \
 	vmull_s32 \
 	vmull_u16 \
