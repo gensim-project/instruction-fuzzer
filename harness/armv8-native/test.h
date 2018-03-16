@@ -4,6 +4,7 @@
 
 typedef struct {
 	uint32_t size;
+	uint32_t context_id;
 	uint32_t data;
 } __attribute__((packed)) test_t;
 
@@ -21,6 +22,11 @@ typedef struct {
 	uint32_t rounding_mode;				// 772
 	uint32_t fpsr;						// 776
 } __attribute__((packed)) state_t;
+
+typedef struct {
+	const char *name;
+	void (*generate)(state_t *);
+} context_t;
 
 extern uint32_t test_slot;
 void execute_test(state_t *input, state_t *output);

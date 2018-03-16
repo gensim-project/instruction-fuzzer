@@ -25,11 +25,11 @@ void yyerror(void *yyscanner, TemplateParser * parser, const char *s);
     astnode *ast_node;
 }
 
-%token <sval> FILENAME TEXT FIELDID FIELDTEXT TEMPLATEID TEMPLATETEXT TEMPLATE_EXPR_ID TEMPLATE_EXPR_NUM TEMPLATE_EXPR_PLUS TEMPLATE_EXPR_DOT TEMPLATE_EXPR_PERCENT
+%token <sval> FILENAME TEXT FIELDID FIELDTEXT TEMPLATEID TEMPLATETEXT TEMPLATE_EXPR_ID TEMPLATE_EXPR_NUM TEMPLATE_EXPR_PLUS TEMPLATE_EXPR_DOT TEMPLATE_EXPR_PERCENT CONTEXTID
 %token <ival> 
-%token ENDOFFILE INCLUDE TEMPLATE FIELD SEMICOLON OBRACKET CBRACKET OBRACE CBRACE NEWLINE
+%token ENDOFFILE INCLUDE TEMPLATE CONTEXT FIELD SEMICOLON OBRACKET CBRACKET OBRACE CBRACE NEWLINE
 
-%type <ast_node> fuzzer_document statement_list include_statement template_statement template_chunk_list template_chunk text_template_chunk field_template_chunk template_expr field_statement field_body_list field_body_item field_body_item_text field_body_item_generator
+%type <ast_node> fuzzer_document statement_list include_statement template_statement template_chunk_list template_chunk text_template_chunk field_template_chunk template_expr field_statement field_body_list field_body_item field_body_item_text field_body_item_generator context_statement
 
 
 %%
@@ -40,6 +40,7 @@ statement_list :
 	statement_list include_statement NEWLINE | 
 	statement_list template_statement NEWLINE {$$ = $1; $$->AddChild($2); } | 
 	statement_list field_statement NEWLINE {$$ = $1; $$->AddChild($2); } | 
+	statement_list context_statement NEWLINE {$$ = $1; $$->AddChild($2); } | 
 	statement_list NEWLINE { $$ = $1; } |
 	%empty {$$ = CreateNode(Node_Document); }
 
@@ -69,6 +70,8 @@ field_body_item : field_body_item_text { $$ = $1; } | field_body_item_generator 
 field_body_item_text : FIELDTEXT { $$ = CreateNode(Node_FieldBodyItemText); $$->AddChild(CreateNodeStr($1)); }
 
 field_body_item_generator : OBRACE CBRACE { $$ = CreateNode(Node_FieldBodyItemGenerator); }
+
+context_statement : CONTEXT CONTEXTID { $$ = CreateNode(Node_Context); $$->AddChild(CreateNodeStr($2)); }
 
 %%
 #include "fuzzer-syntax.tabs.h"

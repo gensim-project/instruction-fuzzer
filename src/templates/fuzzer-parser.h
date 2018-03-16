@@ -26,7 +26,9 @@ enum NodeType {
 	Node_Field,
 	Node_FieldBodyList,
 	Node_FieldBodyItemText,
-	Node_FieldBodyItemGenerator
+	Node_FieldBodyItemGenerator,
+	
+	Node_Context
 };
 
 class astnode {

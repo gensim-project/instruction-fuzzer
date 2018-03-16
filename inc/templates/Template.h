@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include <string>
 
 #include "FieldDescriptor.h"
 
@@ -80,8 +81,18 @@ public:
 	
 	void AddChunk(TemplateChunk *chunk) { _chunks.push_back(chunk); }
 	TemplateChunk *GetChunkByIndex(int index) const { return _chunks.at(index); }
+	
+	void SetContext(const std::string& context) {
+		_context = context;
+	}
+	
+	const std::string& GetContext() const {
+		return _context;
+	}
+	
 private:
 	container_t _chunks;
+	std::string _context;
 };
 
 typedef std::vector<Template> TemplateCollection;
