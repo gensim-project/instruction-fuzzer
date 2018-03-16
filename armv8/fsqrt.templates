@@ -1,0 +1,4 @@
+include fields.inc
+
+template fsqrt [sreg], [sreg]
+template fsqrt [dreg], [dreg]
