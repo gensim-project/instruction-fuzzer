@@ -1,5 +1,5 @@
 harness := ../harness/armv8-native/harness
-generator := ../generator/generator
+generator := ../src/generator/generator
 
 ARMCCPREFIX?=aarch64-linux-gnu-
 

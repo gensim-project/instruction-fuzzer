@@ -83,14 +83,23 @@ void TemplateParser::VisitDocument(astnode *doc) {
 			case Node_Field:
 				VisitFieldStatement(i);
 				break;
+			case Node_Context:
+				VisitContextStatement(i);
+				break;
 			default:
 				throw std::logic_error("Unknown type: " + std::to_string(i->Type()));
 		}
 	}
 }
 
+void TemplateParser::VisitContextStatement(astnode* doc)
+{
+	_current_context = std::string(doc->Children().at(0)->String());
+}
+
 void TemplateParser::VisitTemplateStatement(astnode *doc) {
 	Template t;
+	t.SetContext(_current_context);
 	
 	for(auto i : doc->Children()) {
 		switch(i->Type()) {

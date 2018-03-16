@@ -22,6 +22,7 @@ public:
 
 private:
 	void PrintChunk(const TemplateChunk *, std::map<const TemplateChunk *, std::string>&);
+	unsigned int LookupContextID(const std::string& context);
 };
 
 ARMv8AssemblyTarget::ARMv8AssemblyTarget(std::ostream &target) : AssemblyTarget(target)
@@ -41,7 +42,7 @@ void ARMv8AssemblyTarget::PrintFooter()
 {
 	print(".globl instructions_end\n");
 	print("instructions_count:\n");
-	//print(".word %u\n", GetProcessedTemplateCount());
+	//print(".word 0\n");
 }
 
 void ARMv8AssemblyTarget::PrintChunk(const TemplateChunk *chunk, std::map<const TemplateChunk *, std::string>& backrefs)
@@ -82,12 +83,25 @@ void ARMv8AssemblyTarget::PrintBareTemplate(const Template &t)
 
 void ARMv8AssemblyTarget::PrintTemplate(const Template &t)
 {
-	// Prefix each instruction with its size
+	// Prefix each instruction with its size and context id
 	print(".word 2f-1f\n");
+	print(".word %u\n", LookupContextID(t.GetContext()));
 	print("1:\n");
 	PrintBareTemplate(t);
 	print("\n");
 	print("2:\n");
 }
+
+unsigned int ARMv8AssemblyTarget::LookupContextID(const std::string& context)
+{
+	if (context == "floating-point-32") {
+		return 1;
+	} else if (context == "floating-point-64") {
+		return 2;
+	}
+	
+	return 0;
+}
+
 
 RegisterComponent(AssemblyTarget, ARMv8AssemblyTarget, "armv8", "ARMv8", std::ostream &);

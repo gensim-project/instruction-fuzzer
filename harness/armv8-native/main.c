@@ -10,6 +10,16 @@
 
 #define ITERATIONS 10
 
+extern context_t default_context;
+extern context_t fp32_context;
+extern context_t fp64_context;
+
+context_t *contexts[] = {
+	&default_context,
+	&fp32_context,
+	&fp64_context
+};
+
 void puts(const char *c) {
 	while(*c){
 		angel_writec(*c);
@@ -18,29 +28,6 @@ void puts(const char *c) {
 }
 
 char buffer[0x1000];
-
-uint64_t random() {
-	const  uint64_t key = 0x1f2f3f4f5f6f7f8full;
-	static uint64_t prev = key ;
-	
-	prev *= key;
-	return prev;
-}
-
-void generate_state(state_t *state) {
-	for(int i = 0; i < ARRAY_SIZE(state->gregs); ++i) {
-		state->gregs[i] = random();
-	}
-	
-	for(int i = 0; i < ARRAY_SIZE(state->vregs); ++i) {
-		state->vregs[i].lo = random();
-		state->vregs[i].hi = random();
-	}
-	
-	state->flags = random() & 0xf0000000;
-	state->rounding_mode = 0;
-	state->fpsr = 0;
-}
 
 void copy_test_to_slot(test_t *test) {
 	if(test->size != 4) {
@@ -67,7 +54,7 @@ void run_test(test_t *test) {
 	
 	state_t input_state;
 	state_t output_state;
-	generate_state(&input_state);
+	contexts[test->context_id % ARRAY_SIZE(contexts)]->generate(&input_state);
 	
 	bzero(&output_state, sizeof(output_state));
 	

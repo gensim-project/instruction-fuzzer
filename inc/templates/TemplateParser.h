@@ -5,6 +5,7 @@
 
 #include <fstream>
 #include <memory>
+#include <string>
 
 class astnode;
 
@@ -29,9 +30,11 @@ private:
 	void VisitFieldBodyList(astnode *doc, FieldDescriptor *field);
 	void VisitFieldBodyItemText(astnode *doc, FieldDescriptor *field);
 	void VisitFieldBodyItemGenerator(astnode *doc, FieldDescriptor *field);
+	void VisitContextStatement(astnode *doc);
 	
 	TemplateCollection _templates;
 	FieldDescriptorCollection _fields;
+	std::string _current_context;
 };
 
 #endif

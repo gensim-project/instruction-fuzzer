@@ -25,6 +25,7 @@ int l_debug = 0;
 %x ML_FIELD_STRING
 %x ML_TEMPLATE
 %x ML_TEMPLATE_EXPRESSION
+%x ML_CONTEXT
 
 %%
 
@@ -44,6 +45,7 @@ int l_debug = 0;
 "field"    							{ BEGIN(ML_FIELDID); return FIELD; }
 "include "  						{ BEGIN(ML_FILENAME); return INCLUDE; }
 "template"[ \t]* 					{ BEGIN(ML_TEMPLATE); return TEMPLATE; }
+"context"[ \t]*						{ BEGIN(ML_CONTEXT); return CONTEXT; }
 
 <ML_FILENAME>[a-zA-Z0-9./]+ 		{ yylval->sval = strdup(yytext); return FILENAME; }
 <ML_FILENAME>"\n" 					{ BEGIN(INITIAL); return NEWLINE; }
@@ -68,5 +70,8 @@ int l_debug = 0;
 <ML_TEMPLATE_EXPRESSION>"%"						{ return TEMPLATE_EXPR_PERCENT; }
 <ML_TEMPLATE_EXPRESSION>[0-9]+					{ yylval->sval = strdup(yytext); return TEMPLATE_EXPR_NUM; }
 <ML_TEMPLATE_EXPRESSION>[a-zA-Z_][a-zA-Z_0-9]*	{ yylval->sval = strdup(yytext); return TEMPLATE_EXPR_ID; }
+
+<ML_CONTEXT>[a-zA-Z_\-0-9]+	{ yylval->sval = strdup(yytext); return CONTEXTID; }
+<ML_CONTEXT>"\n" 			{ BEGIN(INITIAL); return NEWLINE; }
 
 %%
