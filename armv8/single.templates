@@ -1,3 +1,11 @@
 include fields.inc
 
-template fcmp s27, #0.0
+template fcvtzs w9, s1
+template fcvtzs x9, s1
+template fcvtzu w9, s1
+template fcvtzu x9, s1
+
+template fcvtzs w9, d1
+template fcvtzs x9, d1
+template fcvtzu w9, d1
+template fcvtzu x9, d1
