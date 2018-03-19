@@ -98,6 +98,14 @@ unsigned int ARMv8AssemblyTarget::LookupContextID(const std::string& context)
 		return 1;
 	} else if (context == "floating-point-64") {
 		return 2;
+	} else if (context == "floating-point-32-nans") {
+		return 3;
+	} else if (context == "floating-point-64-nans") {
+		return 4;
+	} else if (context == "floating-point-32-infs") {
+		return 5;
+	} else if (context == "floating-point-64-infs") {
+		return 6;
 	}
 	
 	return 0;
