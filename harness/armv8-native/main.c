@@ -17,7 +17,7 @@ extern context_t fp64_context;
 context_t *contexts[] = {
 	&default_context,
 	&fp32_context,
-	&fp64_context
+	&fp64_context,
 };
 
 void puts(const char *c) {
