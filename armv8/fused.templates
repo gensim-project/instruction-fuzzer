@@ -1,11 +1,13 @@
 include fields.inc
 
+context floating-point-32
 template fmadd [sreg], [sreg], [sreg], [sreg]
-template fmadd [dreg], [dreg], [dreg], [dreg]
 template fmsub [sreg], [sreg], [sreg], [sreg]
-template fmsub [dreg], [dreg], [dreg], [dreg]
-
 template fnmadd [sreg], [sreg], [sreg], [sreg]
-template fnmadd [dreg], [dreg], [dreg], [dreg]
 template fnmsub [sreg], [sreg], [sreg], [sreg]
+
+context floating-point-64
+template fmadd [dreg], [dreg], [dreg], [dreg]
+template fmsub [dreg], [dreg], [dreg], [dreg]
+template fnmadd [dreg], [dreg], [dreg], [dreg]
 template fnmsub [dreg], [dreg], [dreg], [dreg]

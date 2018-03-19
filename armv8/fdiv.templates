@@ -1,5 +1,8 @@
 include fields.inc
 
+context floating-point-32
 template fdiv [sreg], [sreg], [sreg]
+
+context floating-point-64
 template fdiv [dreg], [dreg], [dreg]
 
