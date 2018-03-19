@@ -1,12 +1,18 @@
 include fields.inc
 
+context floating-point-32
 template fmov [sreg], [sreg]
-template fmov [dreg], [dreg]
-
-template fmov [sreg], [wreg]
 template fmov [wreg], [sreg]
-template fmov [dreg], [xreg]
+
+context floating-point-64
+template fmov [dreg], [dreg]
 template fmov [xreg], [dreg]
 
+context default
+template fmov [sreg], [wreg]
+template fmov [dreg], [xreg]
 template fmov [vreg].D\[1\], [xreg]
 template fmov [xreg], [vreg].D\[1\]
+
+template fmov [sreg], #-5.000000000000000000e-01
+template fmov [dreg], #-5.000000000000000000e-01

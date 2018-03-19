@@ -1,13 +1,17 @@
 include fields.inc
 
+context floating-point-32
 template fcmp [sreg], [sreg]
 template fcmp [sreg], #0.0
 
+context floating-point-64
 template fcmp [dreg], [dreg]
 template fcmp [dreg], #0.0
 
+context floating-point-32
 template fcmpe [sreg], [sreg]
 template fcmpe [sreg], #0.0
 
+context floating-point-64
 template fcmpe [dreg], [dreg]
 template fcmpe [dreg], #0.0
