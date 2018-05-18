@@ -8,6 +8,8 @@
 // uint32 fpcsr
 // uint32 S[64]
 
+#define FPSCR_MASK 0xf1c00000
+
 // Set up the input context (pointer in r0) and store the output 
 // context pointer (r1)
 .globl test_fn_preamble
@@ -26,12 +28,15 @@ test_fn_preamble:
 	ldr r1, [r0]
 	msr CPSR_f, r1
 	
+	ldr r3, =fpscr_mask
+	
 	// Load FPCSR
 	ldr r1, [r0, #(4*14)]
-	and r1, #0xf0000000
+	and r1, r3
 	
 	vmrs r2, fpscr
-	and r2, #0x0fffffff
+	neg r3, r3
+	and r2, r3
 	
 	orr r1, r1, r2
 	vmsr fpscr, r1
@@ -47,6 +52,8 @@ test_fn_preamble:
 	
 	adr r14, 1f
 	bx r14
+fpscr_mask:
+.word FPSCR_MASK
 1:
 
 .globl test_fn_preamble_end
