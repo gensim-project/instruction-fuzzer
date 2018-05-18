@@ -13,7 +13,7 @@ QEMU?=/home/harry/Work/qemu/qemu-2.5.0/arm-linux-user/qemu-arm
 qemu := $(QEMU)
 
 arcsim-bin := $(gensim-root)/build/dist/bin/archsim
-arcsim := $(arcsim-bin) -s armv7a -m arm-user -l contiguous --mode interp --aggressive-code-invalidation
+arcsim := $(arcsim-bin) -s armv7a -m arm-user -l contiguous --mode interp --aggressive-code-invalidation --sys-model user
 
 
 test-count := 50
