@@ -1,0 +1,4 @@
+include fields.inc
+
+template paddd [xmmreg], [xmmreg]
+template paddq [xmmreg], [xmmreg]

@@ -1,0 +1,6 @@
+include fields.inc
+
+template cmp [qreg], [qreg]
+template cmp [dreg], [dreg]
+template cmp [wreg], [wreg]
+template cmp [breg], [breg]

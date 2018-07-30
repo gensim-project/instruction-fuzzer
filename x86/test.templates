@@ -1,0 +1,6 @@
+include fields.inc
+
+template test [qreg], [qreg]
+template test [dreg], [dreg]
+template test [wreg], [wreg]
+template test [breg], [breg]

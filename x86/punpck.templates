@@ -1,0 +1,10 @@
+include fields.inc
+
+template punpcklbw [xmmreg],[xmmreg]
+template punpcklwd [xmmreg],[xmmreg]
+template punpckldq [xmmreg],[xmmreg]
+template punpcklqdq [xmmreg],[xmmreg]
+
+template punpckhdq [xmmreg],[xmmreg]
+template punpckhwd [xmmreg],[xmmreg]
+

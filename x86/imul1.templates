@@ -1,0 +1,6 @@
+include fields.inc
+
+template imul [qreg]
+template imul [dreg]
+template imul [wreg]
+template imul [breg]

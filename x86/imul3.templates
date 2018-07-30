@@ -1,0 +1,10 @@
+include fields.inc
+
+template imul [imm8], [wreg], [wreg]
+template imul [imm8], [dreg], [dreg]
+template imul [imm8], [qreg], [qreg]
+
+template imul [imm16], [wreg], [wreg]
+
+template imul [imm32], [dreg], [dreg]
+template imul [imm32], [qreg], [qreg]

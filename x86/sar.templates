@@ -1,0 +1,16 @@
+include fields.inc
+
+template sar $1, [qreg]
+template sar $1, [dreg]
+template sar $1, [wreg]
+template sar $1, [breg]
+
+template sar %cl, [qreg]
+template sar %cl, [dreg]
+template sar %cl, [wreg]
+template sar %cl, [breg]
+
+template sar [imm8], [qreg]
+template sar [imm8], [dreg]
+template sar [imm8], [wreg]
+template sar [imm8], [breg]
