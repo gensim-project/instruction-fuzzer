@@ -16,7 +16,7 @@ arcsim-bin := $(gensim-root)/build/dist/bin/archsim
 arcsim := $(arcsim-bin) -s armv7a -m arm-user -l contiguous --mode interp --aggressive-code-invalidation --sys-model user
 
 
-test-count := 50
+test-count := 10
 
 formats := adc add and bfc bfi bic clz cmn cmp eor mla mls mov mrs msr mul mvn orr pkhtb pkhbt qadd qasx qdadd qdsub qsax qsub rbit rev16 revsh rev rsb rsc sadd sasx sbc sbfx sdiv sel shadd shasx shsax shsub smlad smlald smlal smlalxx smla smlawx smlsl smls smmla smmls smmul smuad smull smul smulw smusd ssat16 ssat ssax ssub sub sxtab16 sxtab sxtah sxtb16 sxtb sxth teq tst uadd8 uadd16 uasx ubfx udiv uhadd uhasx uhsax uhsub umaal umlal umull uqadd uqadd8 uqasx uqsax uqsub8 uqsub usub8 usub16 uxtab16 uxtab uxtah uxtb16 uxtb uxth 
 

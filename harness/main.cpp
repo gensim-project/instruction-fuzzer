@@ -13,12 +13,15 @@ Descriptor *LoadTest(std::istream &str)
 	uint8_t size;
 	str >> size;
 	
+	uint8_t context;
+	str >> context;
+	
 	uint8_t buffer[size];
 	for(auto &i : buffer) {
 		str >> i;
 	}
 	
-	return new Descriptor(size, buffer);
+	return new Descriptor(size, buffer, context);
 }
 
 void WriteResults(const Descriptor &test, const Descriptor &result, std::ostream &output)

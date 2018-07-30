@@ -1,0 +1,13 @@
+include fields.inc
+
+context qdiv
+template idiv [qreg]
+
+context ddiv
+template idiv [dreg]
+
+context qdiv
+template idiv [wreg]
+
+context bdiv
+template idiv [breg]

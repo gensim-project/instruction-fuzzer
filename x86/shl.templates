@@ -1,0 +1,16 @@
+include fields.inc
+
+template shl $1, [qreg]
+template shl $1, [dreg]
+template shl $1, [wreg]
+template shl $1, [breg]
+
+template shl %cl, [qreg]
+template shl %cl, [dreg]
+template shl %cl, [wreg]
+template shl %cl, [breg]
+
+template shl [imm8], [qreg]
+template shl [imm8], [dreg]
+template shl [imm8], [wreg]
+template shl [imm8], [breg]

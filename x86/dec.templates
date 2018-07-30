@@ -1,0 +1,6 @@
+include fields.inc
+
+template dec [qreg]
+template dec [dreg]
+template dec [wreg]
+template dec [breg]

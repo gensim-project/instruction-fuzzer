@@ -1,0 +1,9 @@
+include fields.inc
+
+template bt [qreg], [qreg]
+template bt [dreg], [dreg]
+template bt [wreg], [wreg]
+
+template bt [imm8], [qreg]
+template bt [imm8], [dreg]
+template bt [imm8], [wreg]
