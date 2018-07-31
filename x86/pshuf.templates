@@ -1,0 +1,3 @@
+include fields.inc
+
+template pshufd $[imm8], [xmmreg], [xmmreg]
