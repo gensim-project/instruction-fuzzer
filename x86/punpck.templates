@@ -5,6 +5,7 @@ template punpcklwd [xmmreg],[xmmreg]
 template punpckldq [xmmreg],[xmmreg]
 template punpcklqdq [xmmreg],[xmmreg]
 
+template punpckhqdq [xmmreg],[xmmreg]
 template punpckhdq [xmmreg],[xmmreg]
 template punpckhwd [xmmreg],[xmmreg]
 

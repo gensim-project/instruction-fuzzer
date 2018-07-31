@@ -1,0 +1,16 @@
+include fields.inc
+
+template ror $1, [qreg]
+template ror $1, [dreg]
+template ror $1, [wreg]
+template ror $1, [breg]
+
+template ror %cl, [qreg]
+template ror %cl, [dreg]
+template ror %cl, [wreg]
+template ror %cl, [breg]
+
+template ror [imm8], [qreg]
+template ror [imm8], [dreg]
+template ror [imm8], [wreg]
+template ror [imm8], [breg]

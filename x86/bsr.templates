@@ -1,0 +1,5 @@
+include fields.inc
+
+template bsr [wreg], [wreg]
+template bsr [dreg], [dreg]
+template bsr [qreg], [qreg]
