@@ -1,0 +1,6 @@
+include fields.inc
+
+template neg [breg]
+template neg [wreg]
+template neg [dreg]
+template neg [qreg]

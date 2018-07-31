@@ -1,0 +1,6 @@
+include fields.inc
+
+template xadd [breg], [breg]
+template xadd [wreg], [wreg]
+template xadd [dreg], [dreg]
+template xadd [qreg], [qreg]

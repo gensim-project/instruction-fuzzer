@@ -1,0 +1,9 @@
+include fields.inc
+
+template cwd
+template cdq
+template cqo
+
+template cbw
+template cwde
+template cdqe

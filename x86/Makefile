@@ -13,7 +13,7 @@ model := $(gensim-root)/build/dist/lib/archsim-modules/x86.dll
 
 test-count := 10
 
-formats := add and bsf bsr bt bts cmp dec div idiv imul1 imul2 imul3 inc or ror rol sar shl shr sub test padd pminub psll psrl punpck
+formats := add and bsf bsr bt bts cmp cmpxchg convert dec div idiv imul1 imul2 imul3 inc mul neg not or ror rol sar sbb shl shr sub test xadd xchg padd pminub psll psrl punpck
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)
