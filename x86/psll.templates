@@ -1,0 +1,5 @@
+include fields.inc
+
+template pslld [imm8], [xmmreg]
+template psllq [imm8], [xmmreg]
+template pslldq [imm8], [xmmreg]

@@ -8,12 +8,12 @@ GENSIM_ROOT?=/home/harry/Work/new-gensim-repo
 gensim-root := $(GENSIM_ROOT)
 
 arcsim-bin := $(gensim-root)/build/dist/bin/archsim
-arcsim := $(arcsim-bin) -s x86 -m x86-user -l contiguous --aggressive-code-invalidation --sys-model user --mode Interpreter
+arcsim := $(arcsim-bin) -s x86 -m x86-user -l contiguous --sys-model user --mode Interpreter
 model := $(gensim-root)/build/dist/lib/archsim-modules/x86.dll
 
 test-count := 10
 
-formats := add and bt cmp dec div idiv imul1 imul2 imul3 inc or sar shl shr sub test padd punpck
+formats := add and bsf bsr bt bts cmp dec div idiv imul1 imul2 imul3 inc or ror rol sar shl shr sub test padd pminub psll psrl punpck
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)

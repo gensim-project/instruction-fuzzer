@@ -126,8 +126,6 @@ static void GenerateTestFunction(size_t size)
 		tf->storage.at(output_ptr++) = postamble[i];
 	}
 	
-	__builtin___clear_cache((void*)tf->function, (void*)((char*)tf->function + total_size));
-	
 	tf->test_slot = (void*)((char*)tf->function + test_fn_preamble_size);
 	
 	test_fn_locations[size] = tf;
@@ -143,7 +141,13 @@ void HarnessPrepareTest(const Descriptor &test)
 	
 	TestFunction *fn = test_fn_locations.at(test.GetSize());
 	test.CopyTo((uint8_t*)fn->test_slot);
-	__builtin___clear_cache((void*)fn->test_slot, (void*)(((uint8_t*)fn->test_slot)+test.GetSize()));	
+	
+	// total size of fn is preamble + test size + postamble
+	uint32_t size = test_fn_preamble_size + test.GetSize() + test_fn_postamble_size;
+	
+	for(char *ptr = (char*)fn->function; ptr <= (char*)fn->function + size; ptr += 64) {
+		asm volatile ("clflush %0" : : "m"(*ptr));
+	}
 }
 
 void HarnessRunTest(const Descriptor &test, Descriptor *&results)
@@ -195,9 +199,9 @@ std::string HarnessFormatResult(const Descriptor &test, const Descriptor &result
 			continue;
 		}
 		if(data.input.gprs[i] != data.output.gprs[i]) {
-			str << "G" << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << data.input.gprs[i] << " != " << std::hex << std::setw(8) << std::setfill('0') << data.output.gprs[i] << std::endl;
+			str << "G" << std::dec << i << " " << std::hex << std::setw(16) << std::setfill('0') << data.input.gprs[i] << " != " << std::hex << std::setw(16) << std::setfill('0') << data.output.gprs[i] << std::endl;
 		} else {
-			str << "G" << std::dec << i << " " << std::hex << std::setw(8) << std::setfill('0') << data.input.gprs[i] << " == " << std::hex << std::setw(8) << std::setfill('0') << data.output.gprs[i] << std::endl;
+			str << "G" << std::dec << i << " " << std::hex << std::setw(16) << std::setfill('0') << data.input.gprs[i] << " == " << std::hex << std::setw(16) << std::setfill('0') << data.output.gprs[i] << std::endl;
 		}
 	}
 	for(int i = 0; i < 16; ++i) {

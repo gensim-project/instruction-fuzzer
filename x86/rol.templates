@@ -1,0 +1,16 @@
+include fields.inc
+
+template rol $1, [qreg]
+template rol $1, [dreg]
+template rol $1, [wreg]
+template rol $1, [breg]
+
+template rol %cl, [qreg]
+template rol %cl, [dreg]
+template rol %cl, [wreg]
+template rol %cl, [breg]
+
+template rol [imm8], [qreg]
+template rol [imm8], [dreg]
+template rol [imm8], [wreg]
+template rol [imm8], [breg]
