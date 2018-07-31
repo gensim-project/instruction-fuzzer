@@ -1,0 +1,6 @@
+include fields.inc
+
+template sbb [breg], [breg]
+template sbb [wreg], [wreg]
+template sbb [dreg], [dreg]
+template sbb [qreg], [qreg]

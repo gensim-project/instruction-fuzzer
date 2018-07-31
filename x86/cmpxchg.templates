@@ -1,0 +1,6 @@
+include fields.inc
+
+template cmpxchg [breg], [breg]
+template cmpxchg [wreg], [wreg]
+template cmpxchg [dreg], [dreg]
+template cmpxchg [qreg], [qreg]

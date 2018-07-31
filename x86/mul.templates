@@ -1,0 +1,6 @@
+include fields.inc
+
+template mul [breg]
+template mul [wreg]
+template mul [dreg]
+template mul [qreg]
