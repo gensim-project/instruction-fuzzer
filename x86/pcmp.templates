@@ -1,0 +1,8 @@
+include fields.inc
+
+template pcmpeqb [xmmreg], [xmmreg]
+template pcmpeqd [xmmreg], [xmmreg]
+
+template pcmpgtb [xmmreg], [xmmreg]
+template pcmpgtw [xmmreg], [xmmreg]
+template pcmpgtd [xmmreg], [xmmreg]

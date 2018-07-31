@@ -11,9 +11,9 @@ arcsim-bin := $(gensim-root)/build/dist/bin/archsim
 arcsim := $(arcsim-bin) -s x86 -m x86-user -l contiguous --sys-model user --mode Interpreter
 model := $(gensim-root)/build/dist/lib/archsim-modules/x86.dll
 
-test-count := 10
+test-count := 50
 
-formats := add and bsf bsr bt bts cmp cmpxchg convert dec div idiv imul1 imul2 imul3 inc mul neg not or ror rol sar sbb shl shr sub test xadd xchg padd pminub psll psrl punpck
+formats := add and bsf bsr bt bts cmp cmpxchg convert dec div idiv imul1 imul2 imul3 inc mul neg not or ror rol sar sbb shl shr sub test xadd xchg padd pand pcmp pminub pmovmskb pshuf psll psrl punpck
 
 binaries := $(formats:%=%.bin)
 listings := $(formats:%=%.S)

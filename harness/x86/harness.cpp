@@ -201,7 +201,7 @@ std::string HarnessFormatResult(const Descriptor &test, const Descriptor &result
 		if(data.input.gprs[i] != data.output.gprs[i]) {
 			str << "G" << std::dec << i << " " << std::hex << std::setw(16) << std::setfill('0') << data.input.gprs[i] << " != " << std::hex << std::setw(16) << std::setfill('0') << data.output.gprs[i] << std::endl;
 		} else {
-			str << "G" << std::dec << i << " " << std::hex << std::setw(16) << std::setfill('0') << data.input.gprs[i] << " == " << std::hex << std::setw(16) << std::setfill('0') << data.output.gprs[i] << std::endl;
+			//str << "G" << std::dec << i << " " << std::hex << std::setw(16) << std::setfill('0') << data.input.gprs[i] << " == " << std::hex << std::setw(16) << std::setfill('0') << data.output.gprs[i] << std::endl;
 		}
 	}
 	for(int i = 0; i < 16; ++i) {
