@@ -1,0 +1,6 @@
+include fields.inc
+
+template mov [qreg], [qreg]
+template mov [wreg], [wreg]
+template mov [dreg], [dreg]
+template mov [breg], [breg]
