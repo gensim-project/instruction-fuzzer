@@ -1,0 +1,6 @@
+include fields.inc
+
+template xor [qreg], [qreg]
+template xor [dreg], [dreg]
+template xor [wreg], [wreg]
+template xor [breg], [breg]

@@ -1,0 +1,7 @@
+include fields.inc
+
+template movsx [breg], [wreg]
+template movsx [wreg], [dreg]
+template movsx [dreg], [qreg]
+
+template movsxd [dreg], [qreg]
